@@ -1,0 +1,23 @@
+:root {
+    --primary-color: #3498db;          /* Primary color of the application */
+    --secondary-color: #2ecc71;        /* Secondary color of the application */
+    --highlight-color: #e74c3c;        /* Highlight color for important elements */
+    --text-color: #333;                /* Default text color */
+    --background-color: #ecf0f1;       /* General background color of the page */
+    --link-color: #2980b9;             /* Color of links */
+    --hover-color: #1abc9c;            /* Highlight color when hovering over elements */
+    --button-color: #d35400;           /* Color of buttons */
+    --border-color: #bdc3c7;           /* Color of borders */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Color of shadow */
+  
+    /* Additional colors for React components */
+    --header-background: #2c3e50;      /* Background color for header components */
+    --footer-background: #34495e;      /* Background color for footer components */
+    --sidebar-background: #95a5a6;     /* Background color for sidebar components */
+    --card-background: #ecf0f1;        /* Background color for card components */
+    --modal-background: rgba(0, 0, 0, 0.7); /* Background color for modal components */
+    --input-border: #7f8c8d;           /* Border color for input components */
+    --error-color: #e74c3c;            /* Color for error messages */
+    --success-color: #2ecc71;          /* Color for success messages */
+}
+  

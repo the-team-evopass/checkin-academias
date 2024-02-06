@@ -1,0 +1,61 @@
+@import url('../../../fonts/styleFonts.css');
+
+.sidebar {
+    width: 250px;
+    height: 100%;
+    padding: 45px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar-header {
+    width: 100%;
+    height: min-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-evenly;
+}
+
+.sidebar-list-buttons {
+    width: 100%;
+    height: 100%;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    list-style: none;
+}
+
+.sidebar-footer{
+    width: 100%;
+    height: min-content;
+}
+
+.sidebar-footer ul {
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.sidebar-footer ul li {
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.sidebar-footer ul li h3 {
+    font: var(--font-family-poppins);
+    font-weight: var(--font-weight-regular);
+}

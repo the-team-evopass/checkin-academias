@@ -1,0 +1,58 @@
+@import url('../../fonts//styleFonts.css');
+
+.container-card-checkin {
+    height: 170px;
+    width: 426px;
+    padding: 0 25px 0 25px;
+    display:  flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px 0px 0px 8px;
+    background: linear-gradient(180deg, #FF3331 0%, #FF914D 100%);
+    box-shadow: -3px 5px 7.5px 0px rgba(0, 0, 0, 0.25);
+}
+
+.title-card-checkin {
+    margin-bottom: 5px;
+    font: var(--font-family-poppins);
+    font-weight: var(--font-weight-bold);
+    font-size: 25px;
+    color: white;
+}
+
+.row-info-card-checkin {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 20px;
+}
+
+.user-img-card-checkin {
+    border-radius: 50%;
+    border-width: 1.5px;
+    border-color: white;
+    border-style: solid;
+}
+
+.text-message-card-checkin {
+    color: white;
+}
+
+.container-card-checkin > div > footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.container-card-checkin > div > footer > button {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    color: white;
+    border: 1px solid #FFF;
+    background: #26EC3A;
+}
