@@ -50,7 +50,7 @@ export function Sidebar () {
                     <li className='logout'>
                         <img src={user} alt="" />
                         <h3>
-                            Felipe Melo
+                            Nome
                         </h3>
                     </li>
                     <li className='footer-user-img'>
