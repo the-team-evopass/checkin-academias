@@ -47,13 +47,13 @@ export function Sidebar () {
             </ul>
             <footer className='sidebar-footer'>
                 <ul>
-                    <li className='logout'>
+                    <li className='sidebar-footer'>
                         <img src={user} alt="" />
                         <h3>
                             Nome
                         </h3>
                     </li>
-                    <li className='footer-user-img'>
+                    <li className='sidebar-footer'>
                         <img src={logout} alt='icone de logout' />
                         <h3>
                             Logout
