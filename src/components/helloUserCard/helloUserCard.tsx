@@ -1,5 +1,4 @@
-
-import '../../assets/styles/components/helloUserCard/styleCardCheckin.css'
+import '../../assets/styles/components/helloUserCard/styleHelloUserCard.css'
 
 const HelloUserCard = () => {
   return (
