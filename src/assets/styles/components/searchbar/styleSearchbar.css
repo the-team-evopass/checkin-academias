@@ -1,13 +1,18 @@
 @import url('../../../fonts/styleFonts.css');
 
-.checkInHistoryCard {
-    position: absolute;
-    width: 1035px;
-    height: 531px;
-    left: 344px;
-    top: 506px;
-    background: #FFFFFF;
-    border: 1px solid #FF914D;
-    border-radius: 40px 40px 0px 0px;
-    font-family: 'AG H5', sans-serif; 
+.search{
+    width: 403px;
+    height: 40px;
+    border: 2px solid #ff914d;
+    border-radius: 8px;
+    align-items: right;
+    background: white;
+}
+
+.img-icon {
+    padding-left:270px;
+}
+
+img {
+    height: 50px;
 }

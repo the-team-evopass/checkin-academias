@@ -31,7 +31,7 @@ export function Home () {
   function render () {return null}
 
   return (
-    <div className='home-container'>
+    <div className='home-container'>  
       <ToastContainer />
       <ul>
         {checkinList &&

@@ -1,13 +1,16 @@
 import '../../assets/styles/components/helloUserCard/styleHelloUserCard.css'
-
 const HelloUserCard = () => {
   return (
     <div className="hello-user-card">
-      <h2>Meu Card</h2>
-      <p>Conteúdo do card...</p>
+      <h1>Meu Card</h1>
+        <div className='hello-user-card-footer'>
+          <p>Bem vindo a tela de checkin da evopass</p>    
+        </div>
     </div>
   );
 };
 
 export default HelloUserCard;
+
+
 

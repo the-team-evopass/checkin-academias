@@ -1,13 +1,5 @@
 @import url('../../../fonts/styleFonts.css');
 
 .checkInHistoryCard {
-    position: absolute;
-    width: 1035px;
-    height: 531px;
-    left: 344px;
-    top: 506px;
-    background: #FFFFFF;
-    border: 1px solid #FF914D;
-    border-radius: 40px 40px 0px 0px;
-    font-family: 'AG H5', sans-serif; 
+    background-color: black;
 }

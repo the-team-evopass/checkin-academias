@@ -16,3 +16,14 @@
     font-family: 'Poppins', sans-serif;
     padding: 100px;
   }
+
+  .hello-user-footer {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 100px;
+    line-height: 36px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+}
