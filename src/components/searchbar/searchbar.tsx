@@ -4,7 +4,9 @@ import search from '../../assets/icons/search.svg';
 const searchbar = () => {
     return (
        <div className='search'>
+        texto
         <img src={search} alt="Ícone de busca" className='img-icon'/>
+        
       </div>  
     );
   };
