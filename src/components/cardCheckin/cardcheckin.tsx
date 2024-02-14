@@ -1,8 +1,16 @@
-import '../../assets/styles/cardCheckin/styleCardCheckin.css'
 import fotoDePerfil from '../../assets/imgs/fotos de perfil/foto-de-perfil.png'
+import '../../assets/styles/cardCheckin/styleCardCheckin.css'
 
+import DenyOrAuthorizeCheckin from '../../services/api/denyOrAuthorizeCheckin'
 
-export function CardCheckin({ nome }: { nome: string }) {
+interface CardCheckinProps {
+    nome: string;
+    gymId: string; // Adicionando gymId como propriedade
+    idStudent: string; // Adicionando idStudent como propriedade
+}
+
+export function CardCheckin({ nome, gymId, idStudent }: CardCheckinProps) {
+
     return (
         <section className='container-card-checkin'>
             <h4 className='title-card-checkin'>Solicitação de check-in</h4>
@@ -14,8 +22,9 @@ export function CardCheckin({ nome }: { nome: string }) {
                     </p>
                 </div>
                 <footer>
-                    <button type="submit">Aprovar</button>
-                    <button type="reset">Recusar</button>
+                    <button type="submit" onClick={ () => DenyOrAuthorizeCheckin(gymId, idStudent)}>
+                        Aprovar
+                    </button>
                 </footer>
             </div>
         </section>

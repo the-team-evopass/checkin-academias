@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+.checkin-history-table {
+    width: calc(100% - 20px);
+    border-collapse: collapse;
+}
+
+.checkin-history-table-head {
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    background-color: #FF914D;
+}
+
+.checkin-history-table thead th {
+    font-weight: 300;
+}
+
+.checkin-history-table thead th:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.checkin-history-table thead th:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.checkin-history-table-cell {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    border-bottom: 1px solid #FF914D;
+}
+
+.checkin-history-table-header,
+.checkin-history-table-cell {
+    padding: 8px;
+}
+
+.checkin-history-table-header {
+    text-align: left;
+}
+
+.checkin-history-table-body {
+    max-height: 300px; /* Ajuste a altura conforme necessário */
+    overflow-y: auto;
+}
+
+.checkin-history-table-cell {
+    white-space: nowrap; /* Evita que o texto seja quebrado */
+}
+  

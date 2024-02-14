@@ -15,6 +15,10 @@ body * {
     padding: 0;
 }
 
+.ul-render {
+    display: none;
+}
+
 #root {
     width: 100vw;
     height: 100vh;

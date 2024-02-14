@@ -28,7 +28,7 @@ export default function SidebarButton({ imgSRC, title, route, statusButton, isSi
 
 
     return (
-        <li
+        <div
             className={`sidebar-button
             ${statusButton && 'sidebar-button-activate'}
             ${isSidebarCollapsed && 'button-colapsed'}`}
@@ -38,6 +38,6 @@ export default function SidebarButton({ imgSRC, title, route, statusButton, isSi
                 <img className={`menu-button-icon-img ${statusButton ? 'menu-button-icon-img-activate' : ''}`} src={imgSRC} alt="" />
                 <h2 className={`menu-button-title-button ${statusButton ? 'menu-button-title-button-activate' : ''}`}>{title}</h2>
             </div>
-        </li>
+        </div>
     )
 }

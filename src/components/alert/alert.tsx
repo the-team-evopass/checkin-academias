@@ -9,10 +9,11 @@ interface AlertProps {
 
 export function Alert({ children }: AlertProps) {
 
+
     return toast(children, {
         position: "top-right",
-        autoClose: 500000,
-        closeButton: false,
+        autoClose: 15000,
+        closeButton: false
     });
 
 }

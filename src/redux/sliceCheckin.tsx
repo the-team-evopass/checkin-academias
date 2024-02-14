@@ -10,34 +10,12 @@ interface CheckinProps {
 }
 
 // Estado inicial da aplicação, uma array de objetos do tipo Languages
-const INITIAL_STATE: CheckinProps[] = [
-  {
-    idUser: 1,
-    image: 'url_da_imagem_1',
-    isChecked: true,
-    name: 'Usuário 1',
-    time: '2024-02-03T12:30:00',
-  },
-  {
-    idUser: 2,
-    image: 'url_da_imagem_2',
-    isChecked: false,
-    name: 'Usuário 2',
-    time: '2024-02-03T13:45:00',
-  },
-  {
-    idUser: 2,
-    image: 'url_da_imagem_2',
-    isChecked: false,
-    name: 'Usuário 2',
-    time: '2024-02-03T13:45:00',
-  },
-];
+const INITIAL_STATE: CheckinProps[] = [];
 
 // Criando um slice do Redux para gerenciar o estado relacionado às linguagens
 const sliceCheckin = createSlice({
-  name: 'checkin', // Nome do slice
-  initialState: INITIAL_STATE, // Estado inicial
+  name: 'checkin',
+  initialState: INITIAL_STATE,
   reducers: {
     
     // Reducer para adicionar uma nova linguagem à lista

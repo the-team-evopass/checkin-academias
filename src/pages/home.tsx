@@ -1,14 +1,26 @@
 import { useSelector } from 'react-redux';
-import useRealtimeDatabaseListener from '../services/firebase/listeningRealtimeDatabase';
+import RealtimeDatabaseListener from '../services/firebase/listeningRealtimeDatabase';
 // import { loginControlID } from './services/controlID/loginControlID';
 // import { aberturaRemota } from '../services/controlID/aberturaRemota';
-
+import { Hearder } from '../components/header/header';
+import { HelloUserCard } from '../components/helloUserCard/helloUserCard';
+import { TableContainer } from '../components/tableContainer/tableContainer';
 import { CardCheckin } from '../components/cardCheckin/cardcheckin';
 
 import { Alert } from '../components/alert/alert';
 
 import { ToastContainer } from 'react-toastify';
 import '../assets/styles/pages/home/styleHome.css'
+
+import TableComponent from '../class/table/classTable';
+
+// Dados para a tabela
+const columns = ['ID', 'Nome', 'Data', 'Hora'];
+const data = [
+  ['124372816', 'Camila Silva', '18/01/2023',  '10:30'],
+  ['122654893', 'Rebeca Amaral', '18/01/2023', '12:45']
+];
+
 
 interface CheckinProps {
   idUser: number;
@@ -19,31 +31,34 @@ interface CheckinProps {
 }
 
 interface RootState {
-  checkin: CheckinProps[]; // Certifique-se de que esta estrutura corresponde ao seu estado real.
+  checkin: CheckinProps[]
 }
 
 export function Home () {
-  // Use o hook personalizado
-  useRealtimeDatabaseListener();
+
   
   const checkinList: CheckinProps[] = useSelector((state: RootState) => state.checkin);
-
-  function render () {return null}
+    
+  RealtimeDatabaseListener();
 
   return (
-    <div className='home-container'>
+    <>
       <ToastContainer />
-      <ul>
+      <ul className='ul-render'>
         {checkinList &&
-          checkinList.map((checkin) => (
-          <Alert>
-            <CardCheckin nome={checkin.name} />
+          checkinList.map((checkin, index) => (
+          <Alert key={index}>
+            <CardCheckin nome={checkin.name} gymId='0' idStudent={checkin.idUser.toString()}/>
           </Alert>
         ))}
       </ul>
-      <button onClick={() => {render()}}>
-        <h1>Abrir catraca</h1>
-      </button>
-    </div>
+      <div className='home-container'>
+        <Hearder/>
+        <HelloUserCard/>
+        <TableContainer>
+          <TableComponent columns={columns} data={data} nome='checkin-history'/>
+        </TableContainer>
+      </div>
+    </>
   );
 }

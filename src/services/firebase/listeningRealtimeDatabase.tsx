@@ -12,33 +12,37 @@ interface CheckinProps {
   time:string
 }
 
-const db = database;
+const db = database
 
-function useRealtimeDatabaseListener() {
-
-  const dispatch = useDispatch();
+export default function RealtimeDatabaseListener() {
+  const dispatch = useDispatch()
 
   useEffect(() => {
-
     const unsubscribe = onValue(ref(db, '0/checkin/'), (snapshot) => {
-      const thisData: CheckinProps[] = snapshot.val();
-      console.log(thisData)
-      dispatch(addCheckin({
-        idUser: thisData[1].idUser,
-        image: thisData[1].image,
-        isChecked: thisData[1].isChecked,
-        name: thisData[1].name,
-        time: thisData[1].time,
-      }));
-    });
 
-    // Retorna uma função de limpeza que será chamada ao desmontar o componente
-    return () => unsubscribe();
-  }, [dispatch]); // Certifique-se de incluir dispatch como dependência
+      const data: CheckinProps[] = snapshot.val()
 
-  // Se você precisar expor mais alguma coisa, pode adicionar aqui
+      if (data) {
+        const userIdex = parseInt(Object.getOwnPropertyNames(data)[0])
+        const timeOfLastCheckin = parseInt(data[userIdex].time)
+        const localTime = new Date().getTime()
+        const timeDifferenceMilliseconds = localTime - timeOfLastCheckin
 
-  return null; // ou qualquer outro valor que você precise
+        if (timeDifferenceMilliseconds < 20000) {
+          dispatch(
+            addCheckin({
+              idUser: data[userIdex]?.idUser,
+              image: data[userIdex]?.image,
+              isChecked: data[userIdex]?.isChecked,
+              name: data[userIdex]?.name,
+              time: data[userIdex]?.time,
+            })
+          )
+        }
+      }
+    })
+
+    return () => unsubscribe()
+  }, [dispatch])
+
 }
-
-export default useRealtimeDatabaseListener;
