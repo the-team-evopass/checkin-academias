@@ -1,5 +1,6 @@
 import imgHelloUserCard from '../../assets/imgs/svgs/img-hello-user-card.svg'
 import '../../assets/styles/components/helloUserCard/styleHelloUserCard.css'
+
 export function HelloUserCard () {
   return (
     <div className="hello-user-card">

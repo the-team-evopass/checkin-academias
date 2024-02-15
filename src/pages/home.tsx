@@ -1,7 +1,5 @@
 import { useSelector } from 'react-redux';
 import RealtimeDatabaseListener from '../services/firebase/listeningRealtimeDatabase';
-// import { loginControlID } from './services/controlID/loginControlID';
-// import { aberturaRemota } from '../services/controlID/aberturaRemota';
 import { Hearder } from '../components/header/header';
 import { HelloUserCard } from '../components/helloUserCard/helloUserCard';
 import { TableContainer } from '../components/tableContainer/tableContainer';
@@ -14,7 +12,7 @@ import '../assets/styles/pages/home/styleHome.css'
 
 import TableComponent from '../class/table/classTable';
 
-// Dados para a tabela
+// Dados para a tabela - teste
 const columns = ['ID', 'Nome', 'Data', 'Hora'];
 const data = [
   ['124372816', 'Camila Silva', '18/01/2023',  '10:30'],

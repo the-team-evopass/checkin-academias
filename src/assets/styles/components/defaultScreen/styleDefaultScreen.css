@@ -43,7 +43,7 @@
 .default-screen-background-logo {
     position: relative;
     left: 50%;
-    top: 75%; /* 75% posiciona a imagem na quarta parte vertical */
+    top: 75%;
     transform: translateX(-50%) translateY(-50%);
     max-width: 200px;
     max-height: 200px;

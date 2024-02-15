@@ -36,7 +36,6 @@ body * {
     padding: 0;
 }
 
-/* Estilo global para a largura dos toasts */
 .Toastify__toast-container {
     width: min-content;
     padding: 0;
