@@ -1,48 +1,53 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { ref, onValue } from 'firebase/database';
-import { addCheckin } from '../../redux/sliceCheckin';
+import { addCheckin } from '../../redux/slices/sliceCheckin';
 import database from './realtimeDatabaseInit';
 
 interface CheckinProps {
-  idUser:number
-  image:string
-  isChecked:boolean 
-  name:string
-  time:string
+  idUser: number;
+  image: string;
+  isChecked: boolean;
+  name: string;
+  time: string;
 }
 
-const db = database
+const db = database;
 
 export default function RealtimeDatabaseListener() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const unsubscribe = onValue(ref(db, '0/checkin/'), (snapshot) => {
+      const data: CheckinProps[] | null = snapshot.val();
 
-      const data: CheckinProps[] = snapshot.val()
+      if (data && typeof data === 'object') {
+        const dataArray = Object.values(data);
+        const filteredArray = dataArray.filter(obj => obj !== null);
+        filteredArray.sort((a, b) => parseInt(b.time) - parseInt(a.time));
 
-      if (data) {
-        const userIdex = parseInt(Object.getOwnPropertyNames(data)[0])
-        const timeOfLastCheckin = parseInt(data[userIdex].time)
-        const localTime = new Date().getTime()
-        const timeDifferenceMilliseconds = localTime - timeOfLastCheckin
+        console.log(filteredArray);
+        
+        const localTime = new Date().getTime();
+        const userIdex = parseInt(Object.getOwnPropertyNames(filteredArray)[0]);
+        const timeOfLastCheckin = parseInt(filteredArray[userIdex].time);
+        const timeDifferenceMilliseconds = localTime - timeOfLastCheckin;
 
         if (timeDifferenceMilliseconds < 20000) {
           dispatch(
             addCheckin({
-              idUser: data[userIdex]?.idUser,
-              image: data[userIdex]?.image,
-              isChecked: data[userIdex]?.isChecked,
-              name: data[userIdex]?.name,
-              time: data[userIdex]?.time,
+              idUser: filteredArray[userIdex]?.idUser,
+              image: filteredArray[userIdex]?.image,
+              isChecked: filteredArray[userIdex]?.isChecked,
+              name: filteredArray[userIdex]?.name,
+              time: filteredArray[userIdex]?.time,
             })
-          )
+          );
         }
       }
-    })
+    });
 
-    return () => unsubscribe()
-  }, [dispatch])
+    return () => unsubscribe();
+  }, [dispatch]);
 
 }

@@ -6,7 +6,10 @@ import { Home } from "../pages/home";
 import { Historico } from "../pages/historico";
 import { Configuracoes } from "../pages/configuracoes";
 import { Login } from "../pages/login";
-
+import { CriarConta } from "../pages/criarConta";
+import { VerificarEmail } from "../pages/verificarEmail";
+import { RecuperarSenha } from "../pages/recuperarSenha";
+import { NotFound } from "../pages/notFound";
 
 const router = createBrowserRouter([
 
@@ -29,12 +32,24 @@ const router = createBrowserRouter([
     },
     {
         path: "*",
-        element: <h1>Pagina 404</h1>
+        element: <NotFound/>
     },
     {
         path: "/login",
-        element: <PrivateRoute> <Login/> </PrivateRoute>
-    }
+        element: <Login/>
+    },
+    {
+        path: "/criarconta",
+        element: <CriarConta/>
+    },
+    {
+        path: "/verificaremail",
+        element: <VerificarEmail/>
+    },
+    {
+        path: "/recuperarsenha",
+        element: <RecuperarSenha/>
+    },
         
 ])
 

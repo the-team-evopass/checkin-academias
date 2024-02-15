@@ -7,6 +7,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
+    transition: width 0.9s ease;
 }
 
 .sidebar-header {
@@ -28,8 +30,16 @@
     margin-top: 100px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 20px;
     list-style: none;
+}
+
+.sidebar-list-buttons-li {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .sidebar-footer{
@@ -65,4 +75,31 @@
     font-weight: 500;
     font-size: 15px;
     color: white;
+}
+
+/* Estilos do collase da sidebar */
+
+.sidebar.collapsed {
+    padding: 20px 0px;
+    width: 85px;
+}
+
+.sidebar.collapsed .sidebar-header-img-logo-nome {
+    display: none !important;
+}
+
+.sidebar.collapsed .sidebar-header-img-seta-lado-esquerdo {
+    display: none !important;
+}
+
+.sidebar-header-img-logo-circular {
+    height: 60px;
+}
+
+.sidebar.collapsed .sidebar-footer ul li {
+    justify-content: center;
+}
+
+.sidebar.collapsed .sidebar-footer ul li.logout h3 {
+    display: none;
 }

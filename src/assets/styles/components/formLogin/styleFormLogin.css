@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+/* Overall form styling */
+.login-form {
+    width: 55%;
+    min-width: 280px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Form title */
+.login-form-title {
+    width: 100%;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: left;
+    font-weight: 800;
+    color: #FF6707;
+}
+
+/* Submit button */
+.login-form-submit-button {
+    width: 50%;
+    padding: 10px;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #FF6707;
+    background: linear-gradient(180deg, #FF914D 0%, #FF3131 100%);
+}
+
+/* Forgot password link */
+.login-form-forgot-password {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.login-form-forgot-password-link {
+    text-decoration: none !important;
+    color: #FF6707;
+}
+
+/* Don't have an account link */
+.login-form-dont-have-account {
+    font-size: 14px;
+    font-weight: 300;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-form-dont-have-account-link {
+    color: #4D4A4A;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-form-dont-have-account a:hover {
+    text-decoration: underline;
+}

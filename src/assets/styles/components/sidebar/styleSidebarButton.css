@@ -23,7 +23,7 @@
 }
 
 .menu-button {
-    width: min-content;
+    width: 100% !important;
     height: 44px;
     display: flex;
     flex-direction: row;
@@ -53,6 +53,10 @@
 
 .menu-button-title-button-activate {
     color: #ff962f;
+}
+
+.button-colapsed {
+    width: min-content;
 }
 
 .button-colapsed .menu-button .menu-button-title-button {

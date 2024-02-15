@@ -1,0 +1,50 @@
+.default-screen {
+    width: calc(100% - 25px);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.default-screen::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 55%;
+    height: 100%;
+    background-image: url('../../../imgs//svgs/mulheres-jovens-na-academia-falando.svg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+
+.default-screen-left-side {
+    z-index: 2;
+    width: 50%;
+    height: 100%;
+    flex: 1;
+    backdrop-filter: blur(1px);
+}
+
+.default-screen-right-side {
+    z-index: 2;
+    width: 50%;
+    height: 100%;
+    border-radius: 65px 0 0 65px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.default-screen-background-logo {
+    position: relative;
+    left: 50%;
+    top: 75%; /* 75% posiciona a imagem na quarta parte vertical */
+    transform: translateX(-50%) translateY(-50%);
+    max-width: 200px;
+    max-height: 200px;
+}

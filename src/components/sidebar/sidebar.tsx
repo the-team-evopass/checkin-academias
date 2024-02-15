@@ -1,12 +1,13 @@
+import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import SidebarButton from './sidebarButton';
 import iconBook from '../../assets/icons/book.svg'
 import iconConfig from '../../assets/icons/config.svg'
 import iconHome from '../../assets/icons//home.svg'
 import setaLadoEsquerdo from '../../assets/icons/seta-lado-esquerdo.svg'
-import logoNome from '../../assets/imgs/logo/logo-inteira-nome.svg'
+import logoNome from '../../assets/imgs/logo/logo-inteira-nome-toda-branca.svg'
+import logoCirculo from '../../assets/imgs/logo/logo-circulo.png'
 import logout from '../../assets/icons/logout.svg'
-// import user from '../../assets/icons/user.svg'
 import '../../assets/styles/components/sidebar/styleSidebar.css'
 
 export function Sidebar () {
@@ -14,12 +15,20 @@ export function Sidebar () {
     const location = useLocation();
     const navigate = useNavigate();
 
+    const [isSidebarCollapsed, setSidebarCollapsed] = useState(false);
+
+    function toggleSidebar() {
+        setSidebarCollapsed(!isSidebarCollapsed);
+    }
 
     return (
-        <div className='sidebar'>
+        <aside className={`sidebar ${isSidebarCollapsed ? 'collapsed' : ''}`}>
             <header className='sidebar-header'>
-                <img src={logoNome} alt="Logo da evopass com o nome escrito" onClick={() => navigate('/')}/> 
-                <img src={setaLadoEsquerdo} alt="seta da sidebar apontando para o lado esquerdo" />
+                <img src={logoNome} alt="Logo da evopass com o nome escrito" className='sidebar-header-img-logo-nome' onClick={() => navigate('/')}/> 
+                <img src={setaLadoEsquerdo} alt="seta da sidebar apontando para o lado esquerdo" className='sidebar-header-img-seta-lado-esquerdo' onClick={toggleSidebar} />
+                {isSidebarCollapsed && (
+                    <img src={logoCirculo} alt="Logo circular da Evopass" className='sidebar-header-img-logo-circular' onClick={() => navigate('/')}/> 
+                )}
             </header>
             <ul className='sidebar-list-buttons'>
                 <li className='sidebar-list-buttons-li'>
@@ -28,7 +37,7 @@ export function Sidebar () {
                         title='Home'
                         route='/'
                         statusButton={location.pathname == '/' ? true : false}
-                        isSidebarCollapsed={false}
+                        isSidebarCollapsed={isSidebarCollapsed}
                     />
                 </li>
                 <li className='sidebar-list-buttons-li'>
@@ -37,7 +46,7 @@ export function Sidebar () {
                         title='Histórico'
                         route='/historico'
                         statusButton={location.pathname == '/historico' ? true : false}
-                        isSidebarCollapsed={false}
+                        isSidebarCollapsed={isSidebarCollapsed}
                     />
                 </li>
                 <li className='sidebar-list-buttons-li'>
@@ -46,7 +55,7 @@ export function Sidebar () {
                         title='configuracoes'
                         route='/configuracoes'
                         statusButton={location.pathname == '/configuracoes' ? true : false}
-                        isSidebarCollapsed={false}
+                        isSidebarCollapsed={isSidebarCollapsed}
                     />
                 </li>
             </ul>
@@ -58,14 +67,8 @@ export function Sidebar () {
                             Logout
                         </h3>
                     </li>
-                    <li className='footer-user-img'>
-                        <img src={logout} alt="" />
-                        <h3>
-                            Felipe Melo
-                        </h3>
-                    </li>
                 </ul>
             </footer>
-        </div>
+        </aside>
     )
 }
