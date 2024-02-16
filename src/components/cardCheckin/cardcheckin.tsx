@@ -18,7 +18,7 @@ export function CardCheckin({ nome, gymId, idStudent }: CardCheckinProps) {
                 <div className="row-info-card-checkin">
                     <img src={fotoDePerfil} alt="" className="user-img-card-checkin"/>
                     <p className='text-message-card-checkin'>
-                        {nome}, acabou de solicitar o check-in na unidade.
+                        {nome} acabou de solicitar o check-in na unidade.
                     </p>
                 </div>
                 <footer>

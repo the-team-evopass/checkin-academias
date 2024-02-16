@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
 
 .sidebar {
-    width: 250px;
+    width: 200px;
     height: 100%;
     padding: 45px 20px;
     display: flex;
@@ -91,6 +91,15 @@
 .sidebar.collapsed .sidebar-header-img-seta-lado-esquerdo {
     display: none !important;
 }
+
+/* .sidebar.collapsed .sidebar-header-img-seta-lado-esquerdo {
+    position: relative;
+    top: 50px;
+    left: 72px;
+    transform: rotate(180deg);
+    transition: top 0.9s ease;
+    transition: left 0.9s ease;
+} */
 
 .sidebar-header-img-logo-circular {
     height: 60px;

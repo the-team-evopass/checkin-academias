@@ -24,13 +24,11 @@ export default function RealtimeDatabaseListener() {
       if (data && typeof data === 'object') {
         const dataArray = Object.values(data);
         const filteredArray = dataArray.filter(obj => obj !== null);
-        filteredArray.sort((a, b) => parseInt(b.time) - parseInt(a.time));
-
-        console.log(filteredArray);
-        
+        filteredArray.sort((a, b) =>  new Date(b.time).getTime() - new Date(a.time).getTime());
+       
         const localTime = new Date().getTime();
         const userIdex = parseInt(Object.getOwnPropertyNames(filteredArray)[0]);
-        const timeOfLastCheckin = parseInt(filteredArray[userIdex].time);
+        const timeOfLastCheckin = new Date (filteredArray[userIdex].time).getTime();
         const timeDifferenceMilliseconds = localTime - timeOfLastCheckin;
 
         if (timeDifferenceMilliseconds < 20000) {

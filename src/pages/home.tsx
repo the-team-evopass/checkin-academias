@@ -12,6 +12,8 @@ import '../assets/styles/pages/home/styleHome.css'
 
 import TableComponent from '../class/table/classTable';
 
+// import GetIPAddress from '../services/ipify/getIPAddres/getIPAddres';
+
 // Dados para a tabela - teste
 const columns = ['ID', 'Nome', 'Data', 'Hora'];
 const data = [
@@ -52,6 +54,7 @@ export function Home () {
       </ul>
       <div className='home-container'>
         <Hearder/>
+        {/* <button onClick={() => GetIPAddress()}>ip</button> */}
         <HelloUserCard/>
         <TableContainer>
           <TableComponent columns={columns} data={data} nome='checkin-history'/>

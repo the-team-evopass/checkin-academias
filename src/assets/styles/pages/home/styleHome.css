@@ -9,3 +9,8 @@
     border-radius: 85px 0px 0px 0px;
     background: #EBEBEB;
 }
+
+/* Classe dinânimica do componente home, usada para colocar o blur */
+.home-container-notify {
+    filter: blur(1px) grayscale(25%);
+}

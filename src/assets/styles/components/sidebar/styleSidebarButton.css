@@ -17,6 +17,14 @@
     background-color: #eff6ff;
 }
 
+.sidebar-button:hover .menu-button-icon-img {
+    filter: invert(42%) sepia(950%) saturate(74807%) hue-rotate(168deg) brightness(200%) contrast(97%) brightness(1) hue-rotate(2400deg);
+}
+
+.sidebar-button:hover .menu-button-title-button {
+    color: #ff962f;
+}
+
 .sidebar-button-activate {
     background-color: #e3efff;
     box-shadow: 0 0 10px rgba(95, 94, 94, 0.127)
@@ -28,10 +36,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-}
-
-.menu-button > h2 {
-    font-size: 18px;
 }
 
 .menu-button-icon-img {
@@ -47,7 +51,7 @@
 .menu-button-title-button {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 16pt;
+    font-size: 14px;
     color: white;
 }
 

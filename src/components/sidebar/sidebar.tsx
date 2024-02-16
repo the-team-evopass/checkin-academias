@@ -52,7 +52,7 @@ export function Sidebar () {
                 <li className='sidebar-list-buttons-li'>
                     <SidebarButton
                         imgSRC={iconConfig}
-                        title='configuracoes'
+                        title='Configuracoes'
                         route='/configuracoes'
                         statusButton={location.pathname == '/configuracoes' ? true : false}
                         isSidebarCollapsed={isSidebarCollapsed}
