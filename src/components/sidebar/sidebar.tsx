@@ -8,6 +8,7 @@ import setaLadoEsquerdo from '../../assets/icons/seta-lado-esquerdo.svg'
 import logoNome from '../../assets/imgs/logo/logo-inteira-nome-toda-branca.svg'
 import logoCirculo from '../../assets/imgs/logo/logo-circulo.png'
 import logout from '../../assets/icons/logout.svg'
+import user from '../../assets/icons/user.svg'
 import '../../assets/styles/components/sidebar/styleSidebar.css'
 
 export function Sidebar () {
@@ -63,6 +64,12 @@ export function Sidebar () {
                 <ul>
                     <li className='logout' onClick={() => navigate('/login')}>
                         <img src={logout} alt='icone de logout' />
+                        <h3>
+                            Logout
+                        </h3>
+                    </li>
+                    <li className='logout' onClick={() => navigate('/login')}>
+                        <img src={user} alt='icone de logout' />
                         <h3>
                             Logout
                         </h3>

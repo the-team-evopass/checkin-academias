@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
 
 .checkin-history-table {
-    width: calc(100% - 20px);
+    width: 100%;
     border-collapse: collapse;
 }
 
 .checkin-history-table-head {
     font-family: 'Poppins', sans-serif;
     color: white;
-    background-color: #FF914D;
+    background-color: rgba(255, 145, 77, 0.85);
 }
 
 .checkin-history-table thead th {
@@ -49,4 +49,19 @@
 .checkin-history-table-cell {
     white-space: nowrap; /* Evita que o texto seja quebrado */
 }
-  
+
+.checkin-history-table-wrapper {
+    width: 100%;
+    max-height: 100%;
+    overflow: auto; /* Adiciona a barra de rolagem vertical quando necessário */
+}
+
+.checkin-history-table-scroll {
+    overflow-x: auto; /* Adiciona a barra de rolagem horizontal quando necessário */
+    overflow-y: hidden; /* Esconde a barra de rolagem vertical para evitar uma possível duplicação */
+    max-width: 100%; /* Garante que a div de rolagem ocupe toda a largura disponível */
+}
+
+
+
+

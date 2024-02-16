@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import '../../assets/styles/components/checkinHistoryTable/styleCheckinHistoryTable.css'
+import '../../assets/styles/components/checkinHistoryTable/styleCheckinHistoryTable.css';
 
 interface TableProps {
   columns: string[];
@@ -12,24 +12,28 @@ export default class TableComponent extends Component<TableProps> {
         const { columns, data, nome } = this.props;
 
         return (
-            <table className={`${nome}-table`}>
-                <thead className={`${nome}-table-head`}>
-                    <tr className={`${nome}-table-row`}>
-                        {columns.map((column, index) => (
-                            <th key={index} className={`${nome}-table-header`}>{column}</th>
-                        ))}
-                    </tr>
-                </thead>
-                <tbody className={`${nome}-table-body`}>
-                    {data.map((row, rowIndex) => (
-                            <tr key={rowIndex} className={`${nome}-table-row`}>
-                            {row.map((cell, colIndex) => (
-                                <td key={colIndex} className={`${nome}-table-cell`}>{cell}</td>
+            <div className={`${nome}-table-wrapper`}>
+                <div className={`${nome}-table-scroll`}>
+                    <table className={`${nome}-table`}>
+                        <thead className={`${nome}-table-head`}>
+                            <tr className={`${nome}-table-row`}>
+                                {columns.map((column, index) => (
+                                    <th key={index} className={`${nome}-table-header`}>{column}</th>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody className={`${nome}-table-body`}>
+                            {data.map((row, rowIndex) => (
+                                <tr key={rowIndex} className={`${nome}-table-row`}>
+                                    {row.map((cell, colIndex) => (
+                                        <td key={colIndex} className={`${nome}-table-cell`}>{cell}</td>
+                                    ))}
+                                </tr>
                             ))}
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         );
     }
 }

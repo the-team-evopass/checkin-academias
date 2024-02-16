@@ -77,6 +77,10 @@
     color: white;
 }
 
+.sidebar-button:hover:not(.sidebar-button-activate) {
+    background: rgba(255, 145, 77, 0.85);
+}
+
 /* Estilos do collase da sidebar */
 
 .sidebar.collapsed {
