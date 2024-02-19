@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import sliceCheckin from "./slices/sliceCheckin";
 import sliceLoadin from "./slices/sliceLoadin";
+import sliceUserInfos from "./slices/sliceUserInfos";
 
 export interface RootState {
     checkin: ReturnType<typeof sliceCheckin>;
@@ -10,7 +11,8 @@ export interface RootState {
 const store = configureStore ({
     reducer: {
         checkin: sliceCheckin,
-        stateIsLoading: sliceLoadin
+        stateIsLoading: sliceLoadin,
+        userInfos: sliceUserInfos
     }
 })
   

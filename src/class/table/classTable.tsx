@@ -16,7 +16,7 @@ export default class TableComponent extends Component<TableProps> {
                 <thead className={`${nome}-table-head`}>
                     <tr className={`${nome}-table-row`}>
                         {columns.map((column, index) => (
-                            <th key={index} className={`${nome}-table-header`}>{column}</th>
+                            <th key={index} className={`${nome}-table-header table-header`}>{column}</th>
                         ))}
                     </tr>
                 </thead>

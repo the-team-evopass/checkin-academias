@@ -8,7 +8,7 @@ interface CheckinProps {
   idUser: number;
   image: string;
   isChecked: boolean;
-  name: string;
+  name: string; 
   time: string;
 }
 

@@ -1,0 +1,16 @@
+/* Oculta a barra de rolagem */
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+/* Define uma largura para a alça (thumb) da barra de rolagem para que ela seja funcional */
+::-webkit-scrollbar-thumb {
+    width: 0;
+    height: 0;
+}
+
+/* Define a cor da trilha (track) da barra de rolagem, se necessário */
+::-webkit-scrollbar-track {
+    background: transparent;
+}

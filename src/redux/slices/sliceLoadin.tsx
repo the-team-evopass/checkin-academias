@@ -10,7 +10,7 @@ const INITIAL_STATE: SliceLoadingProps = {
 };
 
 // eslint-disable-next-line react-refresh/only-export-components
-const SliceLoading = createSlice({
+const sliceLoading = createSlice({
   name: 'sliceLoading',
   initialState: INITIAL_STATE,
   reducers: {
@@ -20,9 +20,9 @@ const SliceLoading = createSlice({
   },
 });
 
-export default SliceLoading.reducer;
-export const { changeStateIsloading } = SliceLoading.actions;
+export default sliceLoading.reducer;
+export const { changeStateIsloading } = sliceLoading.actions;
 
-export const useCheckins = (state: { stateIsLoading: SliceLoadingProps[] }) => {
+export const useIsLoading = (state: { stateIsLoading: SliceLoadingProps[] }) => {
   return state.stateIsLoading;
 };

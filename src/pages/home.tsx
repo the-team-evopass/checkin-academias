@@ -1,26 +1,27 @@
 import { useSelector } from 'react-redux';
-import RealtimeDatabaseListener from '../services/firebase/listeningRealtimeDatabase';
-import { Hearder } from '../components/header/header';
+import { ToastContainer } from 'react-toastify';
+import { Alert } from '../components/alert/alert';
+import { Header } from '../components/header/header';
 import { HelloUserCard } from '../components/helloUserCard/helloUserCard';
 import { TableContainer } from '../components/tableContainer/tableContainer';
 import { CardCheckin } from '../components/cardCheckin/cardcheckin';
-
-import { Alert } from '../components/alert/alert';
-
-import { ToastContainer } from 'react-toastify';
-import '../assets/styles/pages/home/styleHome.css'
-
 import TableComponent from '../class/table/classTable';
-
-// import GetIPAddress from '../services/ipify/getIPAddres/getIPAddres';
+import RealtimeDatabaseListener from '../services/firebase/listeningRealtimeDatabase';
+import '../assets/styles/pages/home/styleHome.css'
 
 // Dados para a tabela - teste
 const columns = ['ID', 'Nome', 'Data', 'Hora'];
 const data = [
   ['124372816', 'Camila Silva', '18/01/2023',  '10:30'],
+  ['124372816', 'Camila Silva', '18/01/2023',  '10:30'],
+  ['124372816', 'Camila Silva', '18/01/2023',  '10:30'],
+  ['124372816', 'Camila Silva', '18/01/2023',  '10:30'],
+  ['124372816', 'Camila Silva', '18/01/2023',  '10:30'],
+  ['124372816', 'Camila Silva', '18/01/2023',  '10:30'],
+  ['124372816', 'Camila Silva', '18/01/2023',  '10:30'],
+  ['124372816', 'Camila Silva', '18/01/2023',  '10:30'],
   ['122654893', 'Rebeca Amaral', '18/01/2023', '12:45']
 ];
-
 
 interface CheckinProps {
   idUser: number;
@@ -35,7 +36,6 @@ interface RootState {
 }
 
 export function Home () {
-
   
   const checkinList: CheckinProps[] = useSelector((state: RootState) => state.checkin);
     
@@ -47,14 +47,13 @@ export function Home () {
       <ul className='ul-render'>
         {checkinList &&
           checkinList.map((checkin, index) => (
-          <Alert key={index}>
+          <Alert key={index} type='notifycheckin'>
             <CardCheckin nome={checkin.name} gymId='0' idStudent={checkin.idUser.toString()}/>
           </Alert>
         ))}
       </ul>
       <div className='home-container'>
-        <Hearder/>
-        {/* <button onClick={() => GetIPAddress()}>ip</button> */}
+        <Header/>
         <HelloUserCard/>
         <TableContainer>
           <TableComponent columns={columns} data={data} nome='checkin-history'/>

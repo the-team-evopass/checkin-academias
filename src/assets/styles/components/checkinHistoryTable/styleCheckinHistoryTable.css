@@ -8,11 +8,16 @@
 .checkin-history-table-head {
     font-family: 'Poppins', sans-serif;
     color: white;
-    background-color: #FF914D;
 }
 
 .checkin-history-table thead th {
     font-weight: 300;
+}
+
+.table-header {
+    position: sticky;
+    top: 0;
+    background-color: #FF914D;
 }
 
 .checkin-history-table thead th:first-child {

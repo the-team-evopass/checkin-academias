@@ -5,12 +5,12 @@ export async function aberturaRemota () {
     console.log('Req de abertura remota feita')
 
     const data = JSON.stringify({
-    "actions": [
-        {
-            "action": "catra",
-            "parameters": "allow=clockwise"
-        }
-    ]
+        "actions": [
+            {
+                "action": "catra",
+                "parameters": "allow=clockwise"
+            }
+        ]
     })
     
     const config = {

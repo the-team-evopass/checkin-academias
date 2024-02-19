@@ -13,7 +13,9 @@ export function TableContainer({ children }: TableContainerProps) {
                 <h4>Histórico de check-in's</h4>
                 <img src={iconConfig} alt='icone de configuração para filtros de tabela' />
             </header>
-            {children}
+            <div className='container-checkin-history-table-overflow'>
+                {children}
+            </div>
         </div>
     )
 }
