@@ -3,6 +3,7 @@ import TableComponent from '../class/table/classTable'
 import { CardCheckinHistory } from '../components/cardCheckin/cardCheckinHistory'
 import { TableContainer } from '../components/tableContainer/tableContainer'
 import { Header } from '../components/header/header'
+import Searchbar from '../components/searchbar/searchbar'
 
 
 
@@ -32,6 +33,7 @@ export function Historico () {
         <div className='historico-container'>
             Minha pagina de histórico
             <Header />
+            <Searchbar />
             <CardCheckinHistory nome={''} gymId={''} idStudent={''} />
             <TableContainer> 
              <TableComponent columns={columns} data={data} nome='checkin-history'/> {/* Renderiza o componente TableComponent com as colunas e dados definidos */}
