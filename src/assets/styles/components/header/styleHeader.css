@@ -1,13 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
 
 .header {
-    width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
     padding: 20px;
     border-top-left-radius: 85px;
     display: flex;
     align-items: center;
     color: #000;
     justify-content: flex-end;
+    z-index: 999; /* Para garantir que o cabeçalho fique sobre o conteúdo */
 }
 
 .header-notification {

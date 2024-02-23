@@ -2,7 +2,7 @@ import iconBell from '../../assets/icons/icon-bell.svg'
 import fotoDePerfil from '../../assets/imgs/fotos de perfil/foto-de-perfil.png'
 import '../../assets/styles/components/header/styleHeader.css'
 
-export function Hearder () {
+export function Header () {
 
     return (
         <header className='header'>

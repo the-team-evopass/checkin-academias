@@ -18,7 +18,7 @@ export function CardCheckinHistory({ nome, gymId, idStudent }: CardCheckinHistor
             <div className='form-card-checkin'>
                 <div className="row-info-card-checkin">
                     <p className='text-message-card-checkin'>
-                        {nome} Mensagem de solicitação de Check-in  |
+                        {nome} Mensagem de solicitação de Check-in |
                     </p>
                     <img src={fotoDePerfil} alt="" className="user-img-card-checkin" />
                     Camila Silva, acabou de solicitar o Check-in na unidade

@@ -1,17 +1,17 @@
 import { useSelector } from 'react-redux'; // Importa o hook useSelector do react-redux para acessar o estado global da aplicação
 import RealtimeDatabaseListener from '../services/firebase/listeningRealtimeDatabase'; // Importa uma função RealtimeDatabaseListener de um serviço para ouvir mudanças no banco de dados em tempo real
-import { Hearder } from '../components/header/header'; // Importa o componente Hearder
+import { Header } from '../components/header/header'; // Importa o componente Hearder
 import { HelloUserCard } from '../components/helloUserCard/helloUserCard'; // Importa o componente HelloUserCard
 import { TableContainer } from '../components/tableContainer/tableContainer'; // Importa o componente TableContainer
 import { CardCheckin } from '../components/cardCheckin/cardcheckin'; // Importa o componente CardCheckin
 import { Alert } from '../components/alert/alert'; // Importa o componente Alert
 import { ToastContainer } from 'react-toastify'; // Importa o componente ToastContainer da biblioteca react-toastify
-import '../assets/styles/pages/home/styleHome.css'; // Importa o arquivo de estilo CSS para a página home
+import '../assets/styles/pages/home/styleHome.css'; 
 import TableComponent from '../class/table/classTable'; // Importa o componente TableComponent
 
-// Dados para a tabela - teste
-const columns = ['ID', 'Nome', 'Data', 'Hora']; // Define as colunas da tabela
-const data = [ // Define os dados da tabela
+
+const columns = ['ID', 'Nome', 'Data', 'Hora'];
+const data = [ 
   ['124372816', 'Camila Silva', '18/01/2023',  '10:30'],
   ['122654893', 'Rebeca Amaral', '18/01/2023', '12:45'],
   ['122654893', 'Rebeca Amaral', '18/01/2023', '12:45'],
@@ -54,22 +54,23 @@ export function Home () {
 
   return (
     <>
-      <ToastContainer /> {/* Renderiza o componente ToastContainer para exibir notificações */}
+      <ToastContainer />
       <ul className='ul-render'>
-        {checkinList && // Verifica se a lista de check-ins está definida e não é vazia
-          checkinList.map((checkin, index) => ( // Mapeia cada objeto de check-in para renderizar um componente Alert com um CardCheckin dentro
-          <Alert key={index}> {/* Define um componente Alert com uma chave única */}
+        {checkinList && 
+          checkinList.map((checkin, index) => ( 
+          <Alert key={index}>
             <CardCheckin nome={checkin.name} gymId='0' idStudent={checkin.idUser.toString()}/> {/* Renderiza um componente CardCheckin com as propriedades necessárias */}
           </Alert>
         ))}
       </ul>
       <div className='home-container'>
-        <Hearder/> {/* Renderiza o componente Hearder */}
-        <HelloUserCard/> {/* Renderiza o componente HelloUserCard */}
-        <TableContainer> {/* Renderiza o componente TableContainer */}
+        <Header/>
+        <HelloUserCard/> 
+        <TableContainer> 
           <TableComponent columns={columns} data={data} nome='checkin-history'/> {/* Renderiza o componente TableComponent com as colunas e dados definidos */}
         </TableContainer>
       </div>
     </>
   );
 }
+                   
