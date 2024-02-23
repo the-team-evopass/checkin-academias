@@ -71,7 +71,7 @@ export function Sidebar () {
                     <li className='logout' onClick={() => navigate('/login')}>
                         <img src={user} alt='icone de logout' />
                         <h3>
-                            Logout
+                            Felipe Melo
                         </h3>
                     </li>
                 </ul>
