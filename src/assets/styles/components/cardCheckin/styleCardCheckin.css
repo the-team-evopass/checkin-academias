@@ -1,4 +1,4 @@
-@import url('../../fonts//styleFonts.css');
+@import url('../../../fonts//styleFonts.css');
 
 .container-card-checkin {
     height: 170px;
@@ -30,6 +30,8 @@
 }
 
 .user-img-card-checkin {
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     border-width: 1.5px;
     border-color: white;

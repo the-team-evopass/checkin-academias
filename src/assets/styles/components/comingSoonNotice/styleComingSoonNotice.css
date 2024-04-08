@@ -1,0 +1,50 @@
+@import url('../../../fonts//styleFonts.css');
+
+.comingsoon-container {
+    height: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #d6d6d6;
+    padding: 40px;
+    gap: 20px;
+}
+
+.comingsoon-container-section-text {
+    max-height: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.comingsoon-title {
+    color: #ff8d2b;
+    text-transform: uppercase;
+    font-family: 'Poppins';
+    font-weight: var(--font-weight-bold);
+    font-size: 30pt;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.comingsoon-subtitle {
+    font-family: 'Poppins';
+    font-weight: var(--font-weight-bold);
+    font-size: 20pt;
+    text-align: center;
+}
+
+
+ .comingsoon-container-img {
+    height: calc(100% - 130px - 20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+
+.comingsoon-img {
+    height: 100%;    
+    min-height: 100%;   
+} 

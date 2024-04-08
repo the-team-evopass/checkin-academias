@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export async function aberturaRemota () {
+export async function aberturaRemota (tokenSession: string) {
 
     console.log('Req de abertura remota feita')
 
@@ -16,12 +16,12 @@ export async function aberturaRemota () {
     const config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: 'http://192.168.0.129:81/execute_actions.fcgi?session=PG0gjSGJhUzZIIWgpYuent1b',
+        url: `http://192.168.0.15:81/execute_actions.fcgi?session=${tokenSession}`,
         headers: { 
           'Content-Type': 'application/json'
         },
         data : data
-      };
+    };
       
     
     try {

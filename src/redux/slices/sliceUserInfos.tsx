@@ -4,12 +4,14 @@ interface SliceUserInfosProps {
     loggedInUserToken: string;
     userPhotoURL: string;
     userUID: string;
+    internalID: string
 }
 
 const INITIAL_STATE: SliceUserInfosProps = {
-    loggedInUserToken: "",
-    userPhotoURL: "",
-    userUID: ""
+    loggedInUserToken: '',
+    userPhotoURL: '',
+    userUID: '',
+    internalID: ''
 };
 
 const sliceUserInfos = createSlice({
@@ -18,10 +20,11 @@ const sliceUserInfos = createSlice({
     reducers: {
         addUserInfos(state, action: PayloadAction<SliceUserInfosProps>) {
 
-            const { loggedInUserToken, userPhotoURL, userUID } = action.payload;
+            const { loggedInUserToken, userPhotoURL, userUID, internalID } = action.payload;
             state.loggedInUserToken = loggedInUserToken;
             state.userPhotoURL = userPhotoURL;
             state.userUID = userUID;
+            state.internalID = internalID
         }
     },
 });

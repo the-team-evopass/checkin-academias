@@ -27,6 +27,7 @@ export function PrivateRoute({ children }: PrivateRouteProps) {
     
     useEffect( () => {
         privateRouter()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     return <>{children}</>;

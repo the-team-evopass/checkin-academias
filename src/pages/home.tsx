@@ -1,3 +1,4 @@
+// import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import { Alert } from '../components/alert/alert';
@@ -5,9 +6,29 @@ import { Header } from '../components/header/header';
 import { HelloUserCard } from '../components/helloUserCard/helloUserCard';
 import { TableContainer } from '../components/tableContainer/tableContainer';
 import { CardCheckin } from '../components/cardCheckin/cardcheckin';
+import allHistoricalCheckIn from '../services/api/allHistoricalCheckIn';
 import TableComponent from '../class/table/classTable';
 import RealtimeDatabaseListener from '../services/firebase/listeningRealtimeDatabase';
 import '../assets/styles/pages/home/styleHome.css'
+
+interface CheckinProps {
+  name: string;
+  image: string;
+  idUser: number;
+  isChecked: boolean;
+  time: string;
+}
+
+interface UserInfosProps {
+  internalID: number;
+}
+
+
+interface RootState {
+  checkin: CheckinProps[]
+  userInfos: UserInfosProps
+}
+
 
 // Dados para a tabela - teste
 const columns = ['ID', 'Nome', 'Data', 'Hora'];
@@ -23,23 +44,24 @@ const data = [
   ['122654893', 'Rebeca Amaral', '18/01/2023', '12:45']
 ];
 
-interface CheckinProps {
-  idUser: number;
-  image: string;
-  isChecked: boolean;
-  name: string;
-  time: string;
-}
 
-interface RootState {
-  checkin: CheckinProps[]
-}
 
 export function Home () {
+
+  const userInfos = useSelector((state: RootState) => state.userInfos);
   
   const checkinList: CheckinProps[] = useSelector((state: RootState) => state.checkin);
-    
+
+  console.log(checkinList, 'checkin list')
+  
   RealtimeDatabaseListener();
+  
+  async function renderData () {
+    const data = await allHistoricalCheckIn(userInfos.internalID)
+    console.log(data)
+  }
+
+  renderData()
 
   return (
     <>
@@ -48,7 +70,7 @@ export function Home () {
         {checkinList &&
           checkinList.map((checkin, index) => (
           <Alert key={index} type='notifycheckin'>
-            <CardCheckin nome={checkin.name} gymId='0' idStudent={checkin.idUser.toString()}/>
+            <CardCheckin nome={checkin.name} userPhotoURL = {checkin.image} gymId='0' idStudent={checkin.idUser.toString()}/>
           </Alert>
         ))}
       </ul>

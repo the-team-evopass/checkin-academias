@@ -69,7 +69,7 @@ export function Alert({ children, type, message }: AlertProps) {
 
             return toast(children, {
                 position: "top-right",
-                autoClose: 15000,
+                autoClose: 30000,
                 closeButton: false
             });
 

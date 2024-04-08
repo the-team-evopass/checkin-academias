@@ -1,7 +1,7 @@
 import axios from "axios";
 import BaseUrl from "./baseurl/BaseUrl";
 
-export default function DenyOrAuthorizeCheckin (gymId: string, idStudent: string) {
+export default function denyOrAuthorizeCheckin (gymId: string, idStudent: string) {
     
     const config = {
         method: 'patch',

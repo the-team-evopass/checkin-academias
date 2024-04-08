@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-import fotoDePerfil from '../../assets/imgs/fotos de perfil/foto-de-perfil.png'
 import iconBell from '../../assets/icons/icon-bell.svg';
 import '../../assets/styles/components/header/styleHeader.css';
 
@@ -17,6 +16,8 @@ export function Header() {
 
     const userInfos = useSelector((state: RootState) => state.userInfos);
 
+    console.log(userInfos.userPhotoURL, 'user infos')
+
     return (
         <header className='header'>
             <div className='header-notification'>
@@ -24,10 +25,8 @@ export function Header() {
             </div>
             <div className='header-user-informations'>
                 {
-                    userInfos.userPhotoURL ? (
+                    userInfos.userPhotoURL && (
                         <img src={userInfos.userPhotoURL} alt='foto de perfil da academia ou da rede' className='header-user-informations-img' />
-                    ) : (
-                        <img src={fotoDePerfil} alt='foto de perfil da academia ou da rede' className='header-user-informations-img'/>
                     )
                 }
                 <div className='header-user-information-content'>

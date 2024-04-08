@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import IsLogged  from '../../services/authentication/isLogged'
+import { IsLogged } from '../../services/api/authentication/isLogged';
 import '../../assets/styles/components/sidebar/styleSidebarButton.css'
 
 interface ButtonProps {

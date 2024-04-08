@@ -9,14 +9,14 @@ interface GetLoginManagementWebProps {
 
 interface UserResponse {
     statusCode: boolean;
+    accessToken?: string;
     user?: {
-        stsTokenManager: {
-            accessToken: string;
-        };
-        providerData: {
-            photoURL: string;
-        }[];
-        uid: string;
+        uid: string,
+        email: string,
+        emailVerified: boolean,
+        displayName: string,
+        photoURL: string,
+        internalId: number
     };
 }
 
@@ -30,7 +30,7 @@ export default async function GetloginManagementWeb({ email, password, role }: G
     const config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: `${BaseUrl}/v2/user/signin/management`,
+        url: `${BaseUrl}/v2/user/signin/unit`,
         headers: {
             'Content-Type': 'application/json'
         },
@@ -44,6 +44,7 @@ export default async function GetloginManagementWeb({ email, password, role }: G
         if ( response.data != false ) {
             return {
                 statusCode: true,
+                accessToken: response.data.accessToken,
                 user: response.data.user
             }
         } else {

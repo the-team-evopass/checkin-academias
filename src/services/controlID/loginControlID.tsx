@@ -12,7 +12,7 @@ export async function loginControlID () {
     const config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: 'http://192.168.0.129:81/login.fcgi',
+        url: 'http://192.168.0.15:81/login.fcgi',
         headers: { 
             'Content-Type': 'application/json'
         },

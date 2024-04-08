@@ -1,9 +1,10 @@
 import '../assets/styles/pages/historico/styleHistorico.css'
+import ComingSoon from '../components/comingSoonNotice/comingSoonNotice'
 
 export function Historico () {
     return (
         <div className='historico-container'>
-            Minha pagina de histórico
+            <ComingSoon/>
         </div>
     )
 }
