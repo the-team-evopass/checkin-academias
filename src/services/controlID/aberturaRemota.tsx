@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export async function aberturaRemota (tokenSession: string) {
+export default async function aberturaRemota (tokenSession: string, ticketGateIP: string, ticketGatePort: number) {
 
-    console.log('Req de abertura remota feita')
+    console.log('Req de abertura remota feita', `Parametros: { token:${tokenSession}, catracaIP: ${ticketGateIP}, catracaPorta: ${ticketGatePort}`)
 
     const data = JSON.stringify({
         "actions": [
@@ -16,7 +16,7 @@ export async function aberturaRemota (tokenSession: string) {
     const config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: `http://192.168.0.15:81/execute_actions.fcgi?session=${tokenSession}`,
+        url: `http://${ticketGateIP}:${ticketGatePort}/execute_actions.fcgi?session=${tokenSession}`,
         headers: { 
           'Content-Type': 'application/json'
         },

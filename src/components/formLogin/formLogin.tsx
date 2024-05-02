@@ -1,8 +1,10 @@
 import { useState, FormEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { changeStateIsloading } from '../../redux/slices/sliceLoadin';
+import { changeStateIsloading } from '../../redux/slices/sliceAPP';
 import { addUserInfos } from '../../redux/slices/sliceUserInfos';
+import { ToastContainer } from 'react-toastify';
+import { ApplicationAlert } from '../alerts/applicationAlert/alert';
 import { CustomInput } from '../../class/input/classInput'
 import GetloginManagementWeb from '../../services/api/authentication/loginManagementWeb';
 import '../../assets/styles/components/formLogin/styleFormLogin.css'
@@ -27,7 +29,7 @@ export function FormLogin () {
 
         event.preventDefault()
 
-        dispatch(changeStateIsloading({ isLoading: true }));
+        dispatch(changeStateIsloading(true));
 
         await GetloginManagementWeb({
             email: user.userEmail,
@@ -35,9 +37,9 @@ export function FormLogin () {
             role: 'unit'
         }).then( (response) => {
 
-            console.log(response)
-
             if (response.statusCode != false) {
+
+                console.log(response)
 
                 if (response.user) {
                     dispatch(addUserInfos({
@@ -47,61 +49,66 @@ export function FormLogin () {
                         internalID: response.user.internalId.toString() || '' ,
                     }));
                 }
+                dispatch(changeStateIsloading(false));
                 navigate('/')
-                dispatch(changeStateIsloading({ isLoading: false }));
                 
             } else {
-                dispatch(changeStateIsloading({ isLoading: false }));
+                dispatch(changeStateIsloading(false));
+                ApplicationAlert('error', 'E-Mail ou senha inválidos')
             }
             
         }).catch( () => { 
-            dispatch(changeStateIsloading({ isLoading: false }));
+            dispatch(changeStateIsloading(false));
+            ApplicationAlert('error', 'E-Mail ou senha inválidos')
         })
     }
 
     return (
     
-        <form action='' className='login-form' onSubmit={handleSubmit}>
+        <>  
+            <ToastContainer/>
+            <form action='' className='login-form' onSubmit={handleSubmit}>
 
-            <h1 className='login-form-title'>Login</h1>
+                <h1 className='login-form-title'>Login</h1>
 
-            <CustomInput
-                classScopeName='login'
-                label='User ID'
-                isLabel={false}
-                type='text'
-                placeholder='E-Mail'
-                onChange={(e)=> setUser({...user,userEmail : e})} 
-                error={true}
-                errorMessage='Teste de erro'
-            />
+                <CustomInput
+                    classScopeName='login'
+                    label='User ID'
+                    isLabel={false}
+                    type='text'
+                    placeholder='E-Mail'
+                    onChange={(e)=> setUser({...user,userEmail : e})} 
+                    error={true}
+                    errorMessage='Teste de erro'
+                />
 
-            <CustomInput
-                classScopeName='login'
-                label='User password'
-                isLabel={false}
-                type='password'
-                placeholder='Senha'
-                onChange={(e)=> setUser({...user, userPassword: e})}
-                error={false}
-                errorMessage=''
-            />
+                <CustomInput
+                    classScopeName='login'
+                    label='User password'
+                    isLabel={false}
+                    type='password'
+                    placeholder='Senha'
+                    onChange={(e)=> setUser({...user, userPassword: e})}
+                    error={false}
+                    errorMessage=''
+                />
 
-            <br />
+                <br />
 
-            <button type='submit' className='login-form-submit-button' >Entrar</button>
+                <button type='submit' className='login-form-submit-button' >Entrar</button>
 
-            <h6 className='login-form-forgot-password'>
-                <a href='/recuperarsenha' className='login-form-forgot-password-link'>Esqueceu a sua senha?</a>
-            </h6>
+                <h6 className='login-form-forgot-password'>
+                    <a href='/recuperarsenha' className='login-form-forgot-password-link'>Esqueceu a sua senha?</a>
+                </h6>
 
-            <br />
-            <br />
+                <br />
+                <br />
 
-            <h3 className='login-form-dont-have-account'>
-                Ainda não tem uma conta? <a href='/criarconta' className='login-form-dont-have-account-link'>Cadastre-se</a>
-            </h3>
-        </form>
+                <h3 className='login-form-dont-have-account'>
+                    Ainda não tem uma conta? <a href='/criarconta' className='login-form-dont-have-account-link'>Cadastre-se</a>
+                </h3>
+            </form>
+        </>
         
     )
 }

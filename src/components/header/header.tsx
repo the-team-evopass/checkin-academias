@@ -16,8 +16,6 @@ export function Header() {
 
     const userInfos = useSelector((state: RootState) => state.userInfos);
 
-    console.log(userInfos.userPhotoURL, 'user infos')
-
     return (
         <header className='header'>
             <div className='header-notification'>

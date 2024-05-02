@@ -21,6 +21,7 @@ const sliceUserInfos = createSlice({
         addUserInfos(state, action: PayloadAction<SliceUserInfosProps>) {
 
             const { loggedInUserToken, userPhotoURL, userUID, internalID } = action.payload;
+            // console.log(loggedInUserToken, 'token recebido no meu slice')
             state.loggedInUserToken = loggedInUserToken;
             state.userPhotoURL = userPhotoURL;
             state.userUID = userUID;

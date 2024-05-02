@@ -1,5 +1,5 @@
 import axios from "axios";
-import BaseUrl from "./baseurl/BaseUrl";
+import BaseUrl from "../baseurl/BaseUrl";
 
 interface ResposeData {
     id: number;

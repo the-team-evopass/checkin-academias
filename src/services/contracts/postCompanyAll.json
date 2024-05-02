@@ -1,0 +1,90 @@
+{
+    "company": {
+        "economicGroup": 4,
+        "tradeName": "Minha Empresas",
+        "cnpj": "12345678901281",
+        "startValidity": "2023-10-07",
+        "cutoffDate": 30,
+        "issuanceDate": 15,
+        "endValidity": "2023-12-31",
+        "companyStatus": "EM IMPLANTACAO",
+        "name": "Empresa Legal",
+        "classification": "SMB1",
+        "numberOfEmployees": 50,
+        "contact": [
+            {
+                "classification": "PESSOAL",
+                "type": "CELULAR",
+                "contact": "11972377405"
+            },
+            {
+                "classification": "PESSOAL",
+                "type": "CELULAR",
+                "contact": "11972377408"
+            },
+            {
+                "classification": "PESSOAL",
+                "type": "CELULAR",
+                "contact": "11972377495"
+            }
+        ],
+        "agreement": {
+            "id":4,
+            "idCompany":123,
+            "status":true,
+            "startValidity":"2023-10-10",
+            "endValidity":"2023-12-31",
+            "plan":"EVOPASS",
+            "observation":"string",
+            "conditions":{
+                "tablelName":"tabelapadrãodecobrança",
+                "accessFee":14.6,
+                "accessFeeDiscount":2.72,
+                "discountEndDate":"2023-10-10",
+                "coPay":{
+                    "value":79.90,
+                    "coparticipationPercentage":50
+                }
+            },
+            "additionalServices":[
+                {
+                    "id":123,
+                    "type":"Laboral",
+                    "description":"string",
+                    "status":true,
+                    "dateStart":"string",
+                    "dateEnd":"string",
+                    "amountOfEventsPerWeek":"3aulasporsemana",
+                    "durationOfEvent":"3meses",
+                    "paymentInformation":{
+                        "inicialValue":2245.34,
+                        "discountPercentage":20,
+                        "finalValue":284.89,
+                        "installmentNumber":2,
+                        "amountPerCharge":1122.5,
+                        "billingIndex":1
+                    }
+                }
+            ]
+        },
+        "address": {
+            "state": "CA",
+            "city": "Los Angeles",
+            "neighborhood": "Downtown",
+            "street": "Main St",
+            "number": 123,
+            "complement": "Apt 4B",
+            "cep": "90001"
+        },
+        "ticketGateConfiguration": {
+            "clockwise": {
+                "ticketGateIP": "192.168.1.1",
+                "ticketGatePort": 1234
+            },
+            "anticlockwise": {
+                "ticketGateIP": "192.168.1.1",
+                "ticketGatePort": 1234
+            }
+        }
+    }
+}

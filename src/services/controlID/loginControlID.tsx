@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export async function loginControlID () {
+export default async function loginControlID () {
 
     console.log('Req de login feita')
 
@@ -12,13 +12,12 @@ export async function loginControlID () {
     const config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: 'http://192.168.0.15:81/login.fcgi',
+        url: 'http://192.168.15.129/login.fcgi',
         headers: { 
             'Content-Type': 'application/json'
         },
         data : data
     };
-      
     
     try {
         const response = await axios.request(config);

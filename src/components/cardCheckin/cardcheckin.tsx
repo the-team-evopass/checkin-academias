@@ -1,21 +1,25 @@
-import denyOrAuthorizeCheckin from '../../services/api/denyOrAuthorizeCheckin'
-import { loginControlID } from '../../services/controlID/loginControlID'
-import { aberturaRemota } from '../../services/controlID/aberturaRemota'
+import GetTicketGateConfiguration from '../../services/api/evopass/getTicketGateConfiguration'
+import denyOrAuthorizeCheckin from '../../services/api/evopass/denyOrAuthorizeCheckin'
+import loginControlID from '../../services/controlID/loginControlID'
+import aberturaRemota from '../../services/controlID/aberturaRemota'
 import '../../assets/styles/components/cardCheckin/styleCardCheckin.css'
 
 interface CardCheckinProps {
     nome: string;
     userPhotoURL: string;
-    gymId: string;
+    gymID: string;
     idStudent: string;
 }
 
-export function CardCheckin({ nome, userPhotoURL, gymId, idStudent }: CardCheckinProps) {
+export function CardCheckin({ nome, userPhotoURL, gymID, idStudent }: CardCheckinProps) {
 
     async function handleAuthorizeCheckin () {
         console.log('Autorizando checkin')
-        await denyOrAuthorizeCheckin(gymId, idStudent)
-        aberturaRemota(await loginControlID())
+        await denyOrAuthorizeCheckin(gymID, idStudent)
+
+        const ticketGateConfiguration = await GetTicketGateConfiguration(gymID)
+
+        await loginControlID().then( myToken => aberturaRemota(myToken, ticketGateConfiguration.ticket_gate_ip, ticketGateConfiguration.ticket_gate_port ))  // Fecha o modal de
     }
     
     console.log(userPhotoURL);

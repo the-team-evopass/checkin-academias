@@ -1,19 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
 import sliceCheckin from "./slices/sliceCheckin";
-import sliceLoadin from "./slices/sliceLoadin";
+import sliceAPP from "./slices/sliceAPP";
 import sliceUserInfos from "./slices/sliceUserInfos";
 
 export interface RootState {
     checkin: ReturnType<typeof sliceCheckin>;
-    stateIsLoading: ReturnType<typeof sliceLoadin>;
+    app: ReturnType<typeof sliceAPP>;
+    userInfos: ReturnType<typeof sliceUserInfos>;
 }
   
 const store = configureStore ({
     reducer: {
         checkin: sliceCheckin,
-        stateIsLoading: sliceLoadin,
+        app: sliceAPP,
         userInfos: sliceUserInfos
     }
 })
   
-export default store
+export default store;

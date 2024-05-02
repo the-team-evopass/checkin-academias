@@ -1,15 +1,8 @@
-import { ReactNode } from 'react';
 import { toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 
-interface AlertProps {
-    type: string
-    message?: string;
-    children?: ReactNode;
-}
-
-export function Alert({ children, type, message }: AlertProps) {
+export function ApplicationAlert(type: string, message: string) {
 
     switch (type) {
 
@@ -65,16 +58,7 @@ export function Alert({ children, type, message }: AlertProps) {
                 theme: "light",
             })
 
-        case 'notifycheckin':
-
-            return toast(children, {
-                position: "top-right",
-                autoClose: 30000,
-                closeButton: false
-            });
-
         default:
             return 'Tipo da mensagem especificada fora do padrão'
     }
-
 }

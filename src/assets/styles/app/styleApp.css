@@ -5,7 +5,6 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-
     background: linear-gradient(180deg, #FF3131 0%, #FF914D 100%);
 }
 
@@ -28,6 +27,10 @@ body * {
     justify-content: center;
 }
 
+.Toastify__toast-icon {
+    margin-left: 10px;
+}
+
 .Toastify__toast {
     padding: 0;
 }
@@ -37,6 +40,6 @@ body * {
 }
 
 .Toastify__toast-container {
-    width: min-content;
+    width: max-content;
     padding: 0;
 }
