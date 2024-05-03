@@ -19,7 +19,6 @@ export default function SidebarButton({ imgSRC, title, route, statusButton, isSi
        
     }
 
-
     return (
         <div
             className={`sidebar-button

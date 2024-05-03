@@ -12,7 +12,7 @@ const INITIAL_STATE: SliceUserInfosProps = {
     userPhotoURL: '',
     userUID: '',
     internalID: ''
-};
+}
 
 const sliceUserInfos = createSlice({
     name: 'userInfos',
@@ -20,18 +20,17 @@ const sliceUserInfos = createSlice({
     reducers: {
         addUserInfos(state, action: PayloadAction<SliceUserInfosProps>) {
 
-            const { loggedInUserToken, userPhotoURL, userUID, internalID } = action.payload;
-            state.loggedInUserToken = loggedInUserToken;
-            state.userPhotoURL = userPhotoURL;
-            state.userUID = userUID;
+            const { loggedInUserToken, userPhotoURL, userUID, internalID } = action.payload
+            state.loggedInUserToken = loggedInUserToken
+            state.userPhotoURL = userPhotoURL
+            state.userUID = userUID
             state.internalID = internalID
         }
     },
 });
 
 export default sliceUserInfos.reducer;
-export const { addUserInfos } = sliceUserInfos.actions;
-
+export const { addUserInfos } = sliceUserInfos.actions
 export const useUserInfos = (state: { stateUserInfos: SliceUserInfosProps }) => {
-    return state.stateUserInfos;
-};
+    return state.stateUserInfos
+}

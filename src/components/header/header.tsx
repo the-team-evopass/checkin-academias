@@ -3,9 +3,9 @@ import iconBell from '../../assets/icons/icon-bell.svg';
 import '../../assets/styles/components/header/styleHeader.css';
 
 interface UserInfosProps {
-    userPhotoURL: string;
-    loggedInUserToken: string;
-    userUID: string;
+    userPhotoURL: string
+    loggedInUserToken: string
+    userUID: string
 }
 
 interface RootState {

@@ -2,7 +2,7 @@ import GetTicketGateConfiguration from '../../services/api/evopass/getTicketGate
 import denyOrAuthorizeCheckin from '../../services/api/evopass/denyOrAuthorizeCheckin'
 import loginControlID from '../../services/controlID/loginControlID'
 import aberturaRemota from '../../services/controlID/aberturaRemota'
-import ConsoleLogHMG from '../../utils/consoleLogHMG/consoleLogHMG';
+import ConsoleLogHMG from '../../utils/consoleLogHMG/consoleLogHMG'
 import '../../assets/styles/components/cardCheckin/styleCardCheckin.css'
 
 interface CardCheckinProps {

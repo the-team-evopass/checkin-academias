@@ -1,26 +1,25 @@
 // import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { ToastContainer } from 'react-toastify';
-import { CheckinAlert } from '../components/alerts/checkinAlert/alert';
-import { Header } from '../components/header/header';
-import { HelloUserCard } from '../components/helloUserCard/helloUserCard';
-import { TableContainer } from '../components/tableContainer/tableContainer';
-import { CardCheckin } from '../components/cardCheckin/cardcheckin';
-// import allHistoricalCheckIn from '../services/api/evopass/allHistoricalCheckIn';
-import TableComponent from '../class/table/classTable';
-import RealtimeDatabaseListener from '../services/firebase/listeningRealtimeDatabase';
+import { useSelector } from 'react-redux'
+import { ToastContainer } from 'react-toastify'
+import { CheckinAlert } from '../components/alerts/checkinAlert/alert'
+import { Header } from '../components/header/header'
+import { HelloUserCard } from '../components/helloUserCard/helloUserCard'
+import { TableContainer } from '../components/tableContainer/tableContainer'
+import { CardCheckin } from '../components/cardCheckin/cardcheckin'
+import TableComponent from '../class/table/classTable'
+import RealtimeDatabaseListener from '../services/firebase/listeningRealtimeDatabase'
 import '../assets/styles/pages/home/styleHome.css'
 
 interface CheckinProps {
-  name: string;
-  image: string;
-  idUser: number;
-  isChecked: boolean;
-  time: string;
+  name: string
+  image: string
+  idUser: number
+  isChecked: boolean
+  time: string
 }
 
 interface UserInfosProps {
-  internalID: number;
+  internalID: number
 }
 
 interface RootState {
@@ -29,7 +28,7 @@ interface RootState {
 }
 
 // Dados para a tabela - teste
-const columns = ['ID', 'Nome', 'Data', 'Hora'];
+const columns = ['ID', 'Nome', 'Data', 'Hora']
 const data = [
   ['124372816', 'Camila Silva', '18/01/2023',  '10:30'],
   ['124372816', 'Camila Silva', '18/01/2023',  '10:30'],
@@ -40,26 +39,14 @@ const data = [
   ['124372816', 'Camila Silva', '18/01/2023',  '10:30'],
   ['124372816', 'Camila Silva', '18/01/2023',  '10:30'],
   ['122654893', 'Rebeca Amaral', '18/01/2023', '12:45']
-];
+]
 
 export function Home () {
-
-  // const userInfos = useSelector((state: RootState) => state.userInfos);
   
-  const checkinList: CheckinProps[] = useSelector((state: RootState) => state.checkin);
-  const gymID = useSelector((state: RootState) => state.userInfos.internalID);
-
+  const checkinList: CheckinProps[] = useSelector((state: RootState) => state.checkin)
+  const gymID = useSelector((state: RootState) => state.userInfos.internalID)
   
-  RealtimeDatabaseListener();
-  
-  // async function renderData () {
-  //   const data = await allHistoricalCheckIn(userInfos.internalID)
-  //   console.log(data)
-  // }
-
-
-  // Colocar useEffect nessa página
-  // renderData()
+  RealtimeDatabaseListener()
 
   return (
     <>

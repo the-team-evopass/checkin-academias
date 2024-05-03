@@ -5,7 +5,6 @@ import { IsLogged } from '../services/api/authentication/isLogged';
 import { RootState } from '../redux/store';
 import Timer from '../utils/timer/timer';
 
-
 interface PrivateRouteProps {
     children: ReactNode;
 }

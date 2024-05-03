@@ -1,12 +1,12 @@
-import { useState, FormEvent } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { changeStateIsloading } from '../../redux/slices/sliceAPP';
-import { addUserInfos } from '../../redux/slices/sliceUserInfos';
-import { ToastContainer } from 'react-toastify';
-import { ApplicationAlert } from '../alerts/applicationAlert/alert';
+import { useState, FormEvent } from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { changeStateIsloading } from '../../redux/slices/sliceAPP'
+import { addUserInfos } from '../../redux/slices/sliceUserInfos'
+import { ToastContainer } from 'react-toastify'
+import { ApplicationAlert } from '../alerts/applicationAlert/alert'
 import { CustomInput } from '../../class/input/classInput'
-import GetloginManagementWeb from '../../services/api/authentication/loginManagementWeb';
+import GetloginManagementWeb from '../../services/api/authentication/loginManagementWeb'
 import '../../assets/styles/components/formLogin/styleFormLogin.css'
 
 interface loginUserProps {
@@ -47,18 +47,18 @@ export function FormLogin () {
                         userPhotoURL: response.user.photoURL || 'https://i.ibb.co/hfqBV4b/foto-de-usu-rio.png',
                         userUID: response.user.uid || '',
                         internalID: response.user.internalId.toString() || '' ,
-                    }));
+                    }))
                 }
-                dispatch(changeStateIsloading(false));
+                dispatch(changeStateIsloading(false))
                 navigate('/')
                 
             } else {
-                dispatch(changeStateIsloading(false));
+                dispatch(changeStateIsloading(false))
                 ApplicationAlert('error', 'E-Mail ou senha inválidos')
             }
             
         }).catch( () => { 
-            dispatch(changeStateIsloading(false));
+            dispatch(changeStateIsloading(false))
             ApplicationAlert('error', 'E-Mail ou senha inválidos')
         })
     }
