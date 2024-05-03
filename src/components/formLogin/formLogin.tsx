@@ -79,7 +79,7 @@ export function FormLogin () {
                     placeholder='E-Mail'
                     onChange={(e)=> setUser({...user,userEmail : e})} 
                     error={true}
-                    errorMessage='Teste de erro'
+                    errorMessage=''
                 />
 
                 <CustomInput

@@ -33,7 +33,6 @@ export function PrivateRoute({ children }: PrivateRouteProps) {
     async function privateRouter() {
         if (userAccessToken !== '') {
             await IsLogged(userAccessToken).then(response => {
-                console.log(response)
                 if (response === 500) {
                     navigate('/login');
                 }
