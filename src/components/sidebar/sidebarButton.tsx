@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import { IsLogged } from '../../services/api/authentication/isLogged';
 import '../../assets/styles/components/sidebar/styleSidebarButton.css'
 
 interface ButtonProps {
@@ -8,22 +7,16 @@ interface ButtonProps {
     route: string;
     statusButton: boolean;
     isSidebarCollapsed: boolean
-    onLogoutClick?: () => void;
 }
 
-export default function SidebarButton({ imgSRC, title, route, statusButton, isSidebarCollapsed, onLogoutClick  }: ButtonProps): JSX.Element {
+export default function SidebarButton({ imgSRC, title, route, statusButton, isSidebarCollapsed  }: ButtonProps): JSX.Element {
 
     const navigate = useNavigate();
 
     async function handleClick(thisRoute: string) {
-        if (onLogoutClick) {
-            onLogoutClick();
-            
-        } else {
-            // mudar isso aqui... preciso melhorar a função que verifica se o usuário está autenticado
-            const userLogged =  IsLogged()
-            userLogged == true ? navigate(thisRoute) : navigate('/login')
-        }
+    
+        navigate(thisRoute)
+       
     }
 
 

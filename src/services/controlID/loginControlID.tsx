@@ -1,8 +1,9 @@
 import axios from "axios";
+import ConsoleLogHMG from '../../utils/consoleLogHMG/consoleLogHMG';
 
-export default async function loginControlID () {
+export default async function loginControlID (ticketGateIP: string, ticketGatePort: number) {
 
-    console.log('Req de login feita')
+    ConsoleLogHMG('Req de login feita')
 
     const data = JSON.stringify({
         "login": "admin",
@@ -12,7 +13,7 @@ export default async function loginControlID () {
     const config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: 'http://192.168.15.129/login.fcgi',
+        url: `http://${ticketGateIP}:${ticketGatePort}/login.fcgi`,
         headers: { 
             'Content-Type': 'application/json'
         },
@@ -21,7 +22,7 @@ export default async function loginControlID () {
     
     try {
         const response = await axios.request(config);
-        console.log(response)
+        ConsoleLogHMG(response)
         return response.data.session;
     } catch (error) {
         console.log(error)

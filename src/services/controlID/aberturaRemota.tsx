@@ -1,8 +1,7 @@
 import axios from "axios";
+import ConsoleLogHMG from '../../utils/consoleLogHMG/consoleLogHMG';
 
 export default async function aberturaRemota (tokenSession: string, ticketGateIP: string, ticketGatePort: number) {
-
-    console.log('Req de abertura remota feita', `Parametros: { token:${tokenSession}, catracaIP: ${ticketGateIP}, catracaPorta: ${ticketGatePort}`)
 
     const data = JSON.stringify({
         "actions": [
@@ -23,10 +22,9 @@ export default async function aberturaRemota (tokenSession: string, ticketGateIP
         data : data
     };
       
-    
     try {
         const response = await axios.request(config);
-        console.log(response)
+        ConsoleLogHMG(response)
         return response.data.session;
     } catch (error) {
         console.log(error)

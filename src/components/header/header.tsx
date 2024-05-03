@@ -20,6 +20,9 @@ export function Header() {
         <header className='header'>
             <div className='header-notification'>
                 <img src={iconBell} alt='sino de notificação' className='header-notification-img' />
+                <button onClick={ ()=> (null) }>
+                    Send package
+                </button>
             </div>
             <div className='header-user-informations'>
                 {

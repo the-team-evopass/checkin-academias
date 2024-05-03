@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-
 import { Layout } from "../layout/layout";
 import { PrivateRoute } from "./private";
 import { Home } from "../pages/home";

@@ -1,7 +1,6 @@
 import axios from "axios";
 import BaseUrl from "../baseurl/BaseUrl";
-
-// precisamos padronizar as respostas das reqs
+import ConsoleLogHMG from '../../../utils/consoleLogHMG/consoleLogHMG';
 
 export async function IsLogged(userAccessToken: string) {
 
@@ -16,6 +15,8 @@ export async function IsLogged(userAccessToken: string) {
 
     try {
         const response = await axios.request(config);
+
+        ConsoleLogHMG(response)
 
         if (response.data) {
             return 200

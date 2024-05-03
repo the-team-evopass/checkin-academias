@@ -1,5 +1,6 @@
 import axios from "axios";
 import BaseUrl from "../baseurl/BaseUrl";
+import ConsoleLogHMG from '../../../utils/consoleLogHMG/consoleLogHMG';
 
 interface GetLoginManagementWebProps {
     email: string;
@@ -40,6 +41,8 @@ export default async function GetloginManagementWeb({ email, password, role }: G
     try {
 
         const response = await axios.request(config);
+
+        ConsoleLogHMG(response)
         
         if ( response.data != false ) {
             return {

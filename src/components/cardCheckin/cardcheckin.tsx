@@ -2,6 +2,7 @@ import GetTicketGateConfiguration from '../../services/api/evopass/getTicketGate
 import denyOrAuthorizeCheckin from '../../services/api/evopass/denyOrAuthorizeCheckin'
 import loginControlID from '../../services/controlID/loginControlID'
 import aberturaRemota from '../../services/controlID/aberturaRemota'
+import ConsoleLogHMG from '../../utils/consoleLogHMG/consoleLogHMG';
 import '../../assets/styles/components/cardCheckin/styleCardCheckin.css'
 
 interface CardCheckinProps {
@@ -14,15 +15,21 @@ interface CardCheckinProps {
 export function CardCheckin({ nome, userPhotoURL, gymID, idStudent }: CardCheckinProps) {
 
     async function handleAuthorizeCheckin () {
-        console.log('Autorizando checkin')
+        ConsoleLogHMG('Autorizando checkin...')
         await denyOrAuthorizeCheckin(gymID, idStudent)
-
         const ticketGateConfiguration = await GetTicketGateConfiguration(gymID)
-
-        await loginControlID().then( myToken => aberturaRemota(myToken, ticketGateConfiguration.ticket_gate_ip, ticketGateConfiguration.ticket_gate_port ))  // Fecha o modal de
+        await loginControlID(
+            ticketGateConfiguration.ticket_gate_ip,
+            ticketGateConfiguration.ticket_gate_port
+        )
+        .then( myToken => { 
+            aberturaRemota(
+                myToken,
+                ticketGateConfiguration.ticket_gate_ip,
+                ticketGateConfiguration.ticket_gate_port
+            )
+        })
     }
-    
-    console.log(userPhotoURL);
 
     return (
         <section className='container-card-checkin'>
