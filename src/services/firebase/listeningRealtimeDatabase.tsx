@@ -31,7 +31,9 @@ export default function RealtimeDatabaseListener() {
   const internalID = userInfos.internalID;
   
   useEffect(() => {
+    console.log(`${internalID}/checkin/`)
     const unsubscribe = onValue(ref(db, `${internalID}/checkin/`), (snapshot) => {
+
       const data: CheckinProps[] | null = snapshot.val();
 
       if (data && typeof data === 'object') {

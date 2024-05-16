@@ -1,7 +1,13 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+import { initializeApp, FirebaseApp } from "firebase/app";
 
-const firebaseConfig = {
+let environment = process.env.NODE_ENV?.trim();
+
+if (environment !== 'prod' && environment !== 'hmg') {
+  environment = 'prod';
+}
+
+const firebaseHMGConfig = {
   apiKey: "AIzaSyDVOBta-Dk_rXCUu2-bY-JLJ5kniGs3FbY",
   authDomain: "api-evoppass-dev.firebaseapp.com",
   databaseURL: "https://api-evoppass-dev-default-rtdb.firebaseio.com",
@@ -12,6 +18,23 @@ const firebaseConfig = {
   measurementId: "G-GBE92LEJNJ"
 };
 
-const firebaseApp = initializeApp(firebaseConfig);
+const firebasePRODConfig = {
+  apiKey: "AIzaSyBxe8RjqIkLUZ9Q7A4Biz0PoI5tJ1XAhOA",
+  authDomain: "api-evopass-d943e.firebaseapp.com",
+  databaseURL: "https://api-evopass-d943e-default-rtdb.firebaseio.com",
+  projectId: "api-evopass-d943e",
+  storageBucket: "api-evopass-d943e.appspot.com",
+  messagingSenderId: "1051627960045",
+  appId: "1:1051627960045:web:a2d6c6c375b53c80bcbee4",
+  measurementId: "G-9N8VF6X2G2"
+};
 
-export default firebaseApp
+let firebaseApp: FirebaseApp;
+
+if (environment === 'hmg') {
+  firebaseApp = initializeApp(firebaseHMGConfig);
+} else {
+  firebaseApp = initializeApp(firebasePRODConfig);
+}
+
+export default firebaseApp;
