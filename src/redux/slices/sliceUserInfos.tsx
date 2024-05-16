@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface SliceUserInfosProps {
+    userName: string
     loggedInUserToken: string;
     userPhotoURL: string;
     userUID: string;
@@ -8,6 +9,7 @@ interface SliceUserInfosProps {
 }
 
 const INITIAL_STATE: SliceUserInfosProps = {
+    userName: '',
     loggedInUserToken: '',
     userPhotoURL: '',
     userUID: '',
@@ -20,7 +22,8 @@ const sliceUserInfos = createSlice({
     reducers: {
         addUserInfos(state, action: PayloadAction<SliceUserInfosProps>) {
 
-            const { loggedInUserToken, userPhotoURL, userUID, internalID } = action.payload
+            const { userName, loggedInUserToken, userPhotoURL, userUID, internalID } = action.payload
+            state.userName = userName
             state.loggedInUserToken = loggedInUserToken
             state.userPhotoURL = userPhotoURL
             state.userUID = userUID

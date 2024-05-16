@@ -39,10 +39,11 @@ export function FormLogin () {
 
             if (response.statusCode != false) {
 
-                console.log(response)
+                console.log(response, 'resposta da req de login')
 
                 if (response.user) {
                     dispatch(addUserInfos({
+                        userName: response.user.displayName || '',
                         loggedInUserToken: response.accessToken || '',
                         userPhotoURL: response.user.photoURL || 'https://i.ibb.co/hfqBV4b/foto-de-usu-rio.png',
                         userUID: response.user.uid || '',

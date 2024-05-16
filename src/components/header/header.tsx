@@ -3,6 +3,7 @@ import iconBell from '../../assets/icons/icon-bell.svg';
 import '../../assets/styles/components/header/styleHeader.css';
 
 interface UserInfosProps {
+    userName: string
     userPhotoURL: string
     loggedInUserToken: string
     userUID: string
@@ -28,7 +29,7 @@ export function Header() {
                     )
                 }
                 <div className='header-user-information-content'>
-                    <h3>Felipe Melo</h3>
+                    <h3>{userInfos.userName}</h3>
                     <h5>id: {userInfos.userUID}</h5>
                 </div>
             </div>

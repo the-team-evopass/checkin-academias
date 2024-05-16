@@ -35,7 +35,7 @@ export default function RealtimeDatabaseListener() {
       const data: CheckinProps[] | null = snapshot.val();
 
       if (data && typeof data === 'object') {
-        const dataArray = Object.values(data);
+        const dataArray = Object.values(data)
         const filteredArray = dataArray.filter(obj => obj !== null);
         filteredArray.sort((a, b) =>  new Date(b.time).getTime() - new Date(a.time).getTime());
         
@@ -53,7 +53,7 @@ export default function RealtimeDatabaseListener() {
               name: filteredArray[userIdex]?.name,
               time: filteredArray[userIdex]?.time,
             })
-            );
+          );
         }
       }
     });

@@ -42,6 +42,8 @@ const data = [
 ]
 
 export function Home () {
+
+  // Filtrar o ultimo checkin do meu gerenciamento de estado
   
   const checkinList: CheckinProps[] = useSelector((state: RootState) => state.checkin)
   const gymID = useSelector((state: RootState) => state.userInfos.internalID)
