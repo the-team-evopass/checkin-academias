@@ -21,7 +21,6 @@ const sliceUserInfos = createSlice({
     initialState: INITIAL_STATE,
     reducers: {
         addUserInfos(state, action: PayloadAction<SliceUserInfosProps>) {
-
             const { userName, loggedInUserToken, userPhotoURL, userUID, internalID } = action.payload
             state.userName = userName
             state.loggedInUserToken = loggedInUserToken

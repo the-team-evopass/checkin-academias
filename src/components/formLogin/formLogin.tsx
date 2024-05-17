@@ -42,6 +42,7 @@ export function FormLogin () {
                 console.log(response, 'resposta da req de login')
 
                 if (response.user) {
+                    document.title = `Checkin - ${response.user.displayName}`
                     dispatch(addUserInfos({
                         userName: response.user.displayName || '',
                         loggedInUserToken: response.accessToken || '',
