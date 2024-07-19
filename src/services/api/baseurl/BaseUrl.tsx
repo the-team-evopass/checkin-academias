@@ -4,7 +4,7 @@ if (environment != 'prod' && environment != 'hmg') {
     environment = 'prod'
 }
 
-const BaseUrl = environment == 'hmg' ? 'https://us-central1-api-evoppass-dev.cloudfunctions.net' : (
-    environment == 'prod' && 'https://us-central1-api-evopass-d943e.cloudfunctions.net'
+const BaseUrl = environment == 'hmg' ? 'https://us-central1-api-evoppass-dev.cloudfunctions.net/v2' : (
+    environment == 'prod' && 'https://v2-rfd6rkplda-uc.a.run.app'
 )
 export default BaseUrl

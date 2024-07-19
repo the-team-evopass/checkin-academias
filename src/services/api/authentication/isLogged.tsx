@@ -7,7 +7,7 @@ export async function IsLogged(userAccessToken: string) {
     const config = {
         method: 'get',
         maxBodyLength: Infinity,
-        url: `${BaseUrl}/v2/user`,
+        url: `${BaseUrl}/user/isLogged`,
         headers: {
             'Authorization': userAccessToken,
         },

@@ -1,6 +1,6 @@
 import axios from "axios";
 import BaseUrl from "../baseurl/BaseUrl";
-import ConsoleLogHMG from '../../../utils/consoleLogHMG/consoleLogHMG';
+// import ConsoleLogHMG from '../../../utils/consoleLogHMG/consoleLogHMG';
 
 interface GetLoginManagementWebProps {
     email: string;
@@ -17,8 +17,8 @@ interface UserResponse {
         emailVerified: boolean,
         displayName: string,
         photoURL: string,
-        internalId: number
     };
+    internalID?: number
 }
 
 export default async function GetloginManagementWeb({ email, password, role }: GetLoginManagementWebProps): Promise<UserResponse> {
@@ -31,7 +31,7 @@ export default async function GetloginManagementWeb({ email, password, role }: G
     const config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: `${BaseUrl}/v2/user/signin/unit`,
+        url: `${BaseUrl}/user/signin/unit`,
         headers: {
             'Content-Type': 'application/json'
         },
@@ -42,13 +42,14 @@ export default async function GetloginManagementWeb({ email, password, role }: G
 
         const response = await axios.request(config);
 
-        ConsoleLogHMG(response)
+        // ConsoleLogHMG(response)
         
         if ( response.data != false ) {
             return {
                 statusCode: true,
                 accessToken: response.data.accessToken,
-                user: response.data.user
+                user: response.data.providerData[0],
+                internalID: response.data.internalID
             }
         } else {
             return {

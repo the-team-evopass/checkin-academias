@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify'
 import { ApplicationAlert } from '../alerts/applicationAlert/alert'
 import { CustomInput } from '../../class/input/classInput'
 import GetloginManagementWeb from '../../services/api/authentication/loginManagementWeb'
+import defaultUserPhoto from '../../assets/imgs/userPhoto/defaultUserPhoto.png'
 import '../../assets/styles/components/formLogin/styleFormLogin.css'
 
 interface loginUserProps {
@@ -37,7 +38,7 @@ export function FormLogin () {
             role: 'unit'
         }).then( (response) => {
 
-            if (response.statusCode != false) {
+            if (response.statusCode == true) {
 
                 console.log(response, 'resposta da req de login')
 
@@ -46,22 +47,22 @@ export function FormLogin () {
                     dispatch(addUserInfos({
                         userName: response.user.displayName || '',
                         loggedInUserToken: response.accessToken || '',
-                        userPhotoURL: response.user.photoURL || 'https://i.ibb.co/hfqBV4b/foto-de-usu-rio.png',
+                        userPhotoURL: response.user.photoURL || defaultUserPhoto,
                         userUID: response.user.uid || '',
-                        internalID: response.user.internalId.toString() || '' ,
+                        internalID: response.internalID?.toString() || '' ,
                     }))
                 }
                 dispatch(changeStateIsloading(false))
                 navigate('/')
-                
             } else {
                 dispatch(changeStateIsloading(false))
                 ApplicationAlert('error', 'E-Mail ou senha inválidos')
             }
             
-        }).catch( () => { 
+        }).catch( (e) => {
+            console.log(e) 
             dispatch(changeStateIsloading(false))
-            ApplicationAlert('error', 'E-Mail ou senha inválidos')
+            ApplicationAlert('error', 'Erro interno')
         })
     }
 
