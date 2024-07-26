@@ -50,6 +50,11 @@ export function FormLogin () {
                         userPhotoURL: response.user.photoURL || defaultUserPhoto,
                         userUID: response.user.uid || '',
                         internalID: response.internalID?.toString() || '' ,
+                        ticketGateConfiguration: {
+                            way: '',
+                            ticketGateIP:'',
+                            ticketGatePort: 0,
+                        }
                     }))
                 }
                 dispatch(changeStateIsloading(false))

@@ -1,11 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+interface TicketGateConfigurationProps {
+    way: string;
+    ticketGateIP: string;
+    ticketGatePort: number
+}
+
 interface SliceUserInfosProps {
     userName: string
     loggedInUserToken: string;
     userPhotoURL: string;
     userUID: string;
     internalID: string
+    ticketGateConfiguration: TicketGateConfigurationProps
 }
 
 const INITIAL_STATE: SliceUserInfosProps = {
@@ -13,7 +20,12 @@ const INITIAL_STATE: SliceUserInfosProps = {
     loggedInUserToken: '',
     userPhotoURL: '',
     userUID: '',
-    internalID: ''
+    internalID: '',
+    ticketGateConfiguration: {
+        way: '',
+        ticketGateIP:'',
+        ticketGatePort: 0,
+    }
 }
 
 const sliceUserInfos = createSlice({

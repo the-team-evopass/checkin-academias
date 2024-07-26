@@ -6,7 +6,7 @@ export default async function GetTicketGateConfiguration (gymID: string) {
     const config = {
       method: 'get',
       maxBodyLength: Infinity,
-      url: `${BaseUrl}/v2/unit/?id=${gymID}`,
+      url: `${BaseUrl}/unit/?id=${gymID}`,
       headers: { }
     }
     

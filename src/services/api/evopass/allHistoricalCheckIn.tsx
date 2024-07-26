@@ -14,7 +14,7 @@ export default async function allHistoricalCheckIn( gymID: number) {
     const config = {
       method: 'get',
       maxBodyLength: Infinity,
-      url: `${BaseUrl}/v2/check-in`,
+      url: `${BaseUrl}/check-in`,
       headers: { },
       data : ''
     };

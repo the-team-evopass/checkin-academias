@@ -6,7 +6,7 @@ export default function denyOrAuthorizeCheckin (gymId: string, idStudent: string
     const config = {
         method: 'patch',
         maxBodyLength: Infinity,
-        url: `${BaseUrl}/v2/check-in?id=${gymId}&idStudent=${idStudent}`,
+        url: `${BaseUrl}/check-in?id=${gymId}&idStudent=${idStudent}`,
         headers: { }
     };
         
