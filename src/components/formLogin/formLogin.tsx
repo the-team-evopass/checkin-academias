@@ -2,12 +2,13 @@ import { useState, FormEvent } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { changeStateIsloading } from '../../redux/slices/sliceAPP'
-import { addUserInfos } from '../../redux/slices/sliceUserInfos'
+import { addUserInfos, setTicketGateConfiguration } from '../../redux/slices/sliceUserInfos'
 import { ToastContainer } from 'react-toastify'
 import { ApplicationAlert } from '../alerts/applicationAlert/alert'
 import { CustomInput } from '../../class/input/classInput'
 import GetloginManagementWeb from '../../services/api/authentication/loginManagementWeb'
 import defaultUserPhoto from '../../assets/imgs/userPhoto/defaultUserPhoto.png'
+import GetTicketGateConfiguration from '../../services/api/evopass/GET/getTicketGateConfiguration'
 import '../../assets/styles/components/formLogin/styleFormLogin.css'
 
 interface loginUserProps {
@@ -43,19 +44,22 @@ export function FormLogin () {
                 console.log(response, 'resposta da req de login')
 
                 if (response.user) {
+
                     document.title = `Checkin - ${response.user.displayName}`
+                    
                     dispatch(addUserInfos({
                         userName: response.user.displayName || '',
                         loggedInUserToken: response.accessToken || '',
                         userPhotoURL: response.user.photoURL || defaultUserPhoto,
                         userUID: response.user.uid || '',
-                        internalID: response.internalID?.toString() || '' ,
-                        ticketGateConfiguration: {
-                            way: '',
-                            ticketGateIP:'',
-                            ticketGatePort: 0,
-                        }
+                        internalID: response.internalID?.toString() || '',
+                        ticketGateConfiguration: []
                     }))
+
+                    GetTicketGateConfiguration(response.internalID ? response.internalID.toString() : '').then(response => {
+                        console.log('configuração da catraca indo pro dispatch', response)
+                        dispatch(setTicketGateConfiguration(response))
+                    })
                 }
                 dispatch(changeStateIsloading(false))
                 navigate('/')
@@ -78,6 +82,8 @@ export function FormLogin () {
             <form action='' className='login-form' onSubmit={handleSubmit}>
 
                 <h1 className='login-form-title'>Login</h1>
+
+                <br />
 
                 <CustomInput
                     classScopeName='login'
@@ -112,9 +118,9 @@ export function FormLogin () {
                 <br />
                 <br />
 
-                <h3 className='login-form-dont-have-account'>
+                {/* <h3 className='login-form-dont-have-account'>
                     Ainda não tem uma conta? <a href='/criarconta' className='login-form-dont-have-account-link'>Cadastre-se</a>
-                </h3>
+                </h3> */}
             </form>
         </>
         

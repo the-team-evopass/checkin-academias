@@ -1,8 +1,10 @@
-import GetTicketGateConfiguration from '../../services/api/evopass/getTicketGateConfiguration'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../redux/store'
 import denyOrAuthorizeCheckin from '../../services/api/evopass/denyOrAuthorizeCheckin'
 import loginControlID from '../../services/controlID/loginControlID'
 import aberturaRemota from '../../services/controlID/aberturaRemota'
 import ConsoleLogHMG from '../../utils/consoleLogHMG/consoleLogHMG'
+import formatReplaceEncodedSpaces from '../../utils/formats/formatReplaceEncodedSpaces'
 import '../../assets/styles/components/cardCheckin/styleCardCheckin.css'
 
 interface CardCheckinProps {
@@ -14,19 +16,25 @@ interface CardCheckinProps {
 
 export function CardCheckin({ nome, userPhotoURL, gymID, idStudent }: CardCheckinProps) {
 
+    const ticketGateConfiguration = useSelector((state: RootState) => state.userInfos.ticketGateConfiguration);
+
+    const ticketGateIP = ticketGateConfiguration[0].ticket_gate_ip
+    const ticketGatePort = ticketGateConfiguration[0].ticket_gate_port
+    const ticketGateDirection = ticketGateConfiguration[0].preferenceDirection
+
     async function handleAuthorizeCheckin () {
         ConsoleLogHMG('Autorizando checkin...')
         await denyOrAuthorizeCheckin(gymID, idStudent)
-        const ticketGateConfiguration = await GetTicketGateConfiguration(gymID)
         await loginControlID(
-            ticketGateConfiguration.ticket_gate_ip,
-            ticketGateConfiguration.ticket_gate_port
+            ticketGateIP,
+            ticketGatePort
         )
         .then( myToken => { 
             aberturaRemota(
                 myToken,
-                ticketGateConfiguration.ticket_gate_ip,
-                ticketGateConfiguration.ticket_gate_port
+                ticketGateIP,
+                ticketGatePort,
+                ticketGateDirection
             )
         })
     }
@@ -38,7 +46,7 @@ export function CardCheckin({ nome, userPhotoURL, gymID, idStudent }: CardChecki
                 <div className="row-info-card-checkin">
                     <img src={userPhotoURL} alt="" className="user-img-card-checkin"/>
                     <p className='text-message-card-checkin'>
-                        {nome} acabou de solicitar o check-in na unidade.
+                        {formatReplaceEncodedSpaces(nome)} acabou de solicitar o check-in na unidade.
                     </p>
                 </div>
                 <footer>

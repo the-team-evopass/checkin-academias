@@ -1,7 +1,7 @@
 import axios from "axios";
-import BaseUrl from '../baseurl/BaseUrl';
+import BaseUrl from '../../baseurl/BaseUrl';
 
-export default async function GetTicketGateConfiguration (gymID: string) {
+export default async function GetTicketGateConfiguration (gymID: string | undefined) {
 
     const config = {
       method: 'get',
@@ -12,7 +12,7 @@ export default async function GetTicketGateConfiguration (gymID: string) {
     
     try {
         const response = await axios.request(config);
-        return(response.data.TicketGateConfiguration[0])
+        return(response.data.unit.TicketGateConfiguration)
     } catch (error) {
         console.log(error);
         throw error;

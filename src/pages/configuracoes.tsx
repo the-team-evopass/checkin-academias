@@ -1,10 +1,17 @@
-import ComingSoon from '../components/comingSoonNotice/comingSoonNotice'
+import { ToastContainer } from 'react-toastify'
+import { Header } from '../components/header/header'
+import { CardTicketGateConfiguration } from '../components/cardTicketGateConfiguration/cardTicketGateConfiguration'
 import '../assets/styles/pages/configuracoes/styleConfiguracoes.css'
 
 export function Configuracoes () {
+
     return (
-        <div className='configuracoes-container'>
-            <ComingSoon/>
-        </div>
+        <>  
+            <ToastContainer/>
+            <div className='configuracoes-container'>
+                <Header/>
+                <CardTicketGateConfiguration/>
+            </div>
+        </>
     )
 }

@@ -1,13 +1,13 @@
 import axios from "axios";
 import ConsoleLogHMG from '../../utils/consoleLogHMG/consoleLogHMG';
 
-export default async function aberturaRemota (tokenSession: string, ticketGateIP: string, ticketGatePort: number) {
+export default async function aberturaRemota (tokenSession: string, ticketGateIP: string, ticketGatePort: number, ticketGateDirection: string) {
 
     const data = JSON.stringify({
         "actions": [
             {
                 "action": "catra",
-                "parameters": "allow=clockwise"
+                "parameters": `allow=${ticketGateDirection}`
             }
         ]
     })

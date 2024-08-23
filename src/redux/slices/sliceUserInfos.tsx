@@ -1,19 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface TicketGateConfigurationProps {
-    way: string;
-    ticketGateIP: string;
-    ticketGatePort: number
-}
-
-interface SliceUserInfosProps {
-    userName: string
-    loggedInUserToken: string;
-    userPhotoURL: string;
-    userUID: string;
-    internalID: string
-    ticketGateConfiguration: TicketGateConfigurationProps
-}
+import { TicketGateConfigurationProps } from './slicesStates/sliceUserInfosStates';
+import { SliceUserInfosProps } from './slicesStates/sliceUserInfosStates';
 
 const INITIAL_STATE: SliceUserInfosProps = {
     userName: '',
@@ -21,11 +8,7 @@ const INITIAL_STATE: SliceUserInfosProps = {
     userPhotoURL: '',
     userUID: '',
     internalID: '',
-    ticketGateConfiguration: {
-        way: '',
-        ticketGateIP:'',
-        ticketGatePort: 0,
-    }
+    ticketGateConfiguration: []
 }
 
 const sliceUserInfos = createSlice({
@@ -39,12 +22,15 @@ const sliceUserInfos = createSlice({
             state.userPhotoURL = userPhotoURL
             state.userUID = userUID
             state.internalID = internalID
-        }
+        },
+        setTicketGateConfiguration(state, action: PayloadAction<TicketGateConfigurationProps[]>) {
+            state.ticketGateConfiguration = action.payload
+        },
     },
-});
+})
 
-export default sliceUserInfos.reducer;
-export const { addUserInfos } = sliceUserInfos.actions
+export default sliceUserInfos.reducer
+export const { addUserInfos, setTicketGateConfiguration } = sliceUserInfos.actions
 export const useUserInfos = (state: { stateUserInfos: SliceUserInfosProps }) => {
     return state.stateUserInfos
 }

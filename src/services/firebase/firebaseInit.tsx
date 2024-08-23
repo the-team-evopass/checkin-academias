@@ -1,4 +1,3 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp, FirebaseApp } from "firebase/app";
 
 let environment = process.env.NODE_ENV?.trim();

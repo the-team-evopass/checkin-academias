@@ -5,7 +5,6 @@ import { LoadinScreen } from '../components/loadingScreen/loadingScreen';
 import { FormLogin } from '../components/formLogin/formLogin'
 import logo from '../assets/imgs/logo/logo-inteira-nome-branca-laranja.svg'
 
-
 export function Login () {
 
     const isLoading = useSelector((state: RootState) => state.app.isLoading)

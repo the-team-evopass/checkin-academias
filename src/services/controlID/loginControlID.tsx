@@ -3,7 +3,7 @@ import ConsoleLogHMG from '../../utils/consoleLogHMG/consoleLogHMG';
 
 export default async function loginControlID (ticketGateIP: string, ticketGatePort: number) {
 
-    ConsoleLogHMG('Req de login feita')
+    ConsoleLogHMG('Req de login feita - Control iD')
 
     const data = JSON.stringify({
         "login": "admin",
