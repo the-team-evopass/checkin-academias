@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import SidebarButton from './sidebarButton';
-import iconBook from '../../assets/icons/book.svg'
-import iconConfig from '../../assets/icons/config.svg'
 import iconHome from '../../assets/icons//home.svg'
+import iconBook from '../../assets/icons/book.svg'
+import checkinIcon from '../../assets/imgs/svgs/checkin-icon.svg'
+import iconConfig from '../../assets/icons/config.svg'
+import iconEvoclub from '../../assets/icons/ios-smartphone_check.svg'
 import setaLadoEsquerdo from '../../assets/icons/seta-lado-esquerdo.svg'
 import logoNome from '../../assets/imgs/logo/logo-inteira-nome-toda-branca.svg'
 import logoCirculo from '../../assets/imgs/logo/logo-circulo.png'
@@ -46,6 +48,24 @@ export function Sidebar () {
                         title='Histórico'
                         route='/historico'
                         statusButton={location.pathname == '/historico' ? true : false}
+                        isSidebarCollapsed={isSidebarCollapsed}
+                    />
+                </li>
+                <li className='sidebar-list-buttons-li'>
+                    <SidebarButton
+                        imgSRC={checkinIcon}
+                        title='Entrada manual'
+                        route='/entrada-manual'
+                        statusButton={location.pathname == '/entrada-manual' ? true : false}
+                        isSidebarCollapsed={isSidebarCollapsed}
+                    />
+                </li>
+                <li className='sidebar-list-buttons-li'>
+                    <SidebarButton
+                        imgSRC={iconEvoclub}
+                        title='Evoclub'
+                        route='/checkin-evoclub'
+                        statusButton={location.pathname == '/checkin-evoclub' ? true : false}
                         isSidebarCollapsed={isSidebarCollapsed}
                     />
                 </li>

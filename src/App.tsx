@@ -1,9 +1,10 @@
 import { RouterProvider } from 'react-router-dom';
 import { router } from './routes/routes';
-import './assets/styles/app/styleApp.css'
 import './assets/styles/webkit/styleScrollBar.css'
+import './assets/styles/webkit/styleAutocomplete.css'
+import './assets/styles/app/styleApp.css'
 
-function App() {
+export default function App() {
 
   if (process.env.NODE_ENV?.trim() === 'hmg') {
     console.log('%cAmbiente de homologação', 'color: green; font-size: 30px; font-weight: 800;');
@@ -17,5 +18,3 @@ function App() {
     <RouterProvider router={router} />
   );
 }
-
-export default App;

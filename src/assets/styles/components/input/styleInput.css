@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
-
 .custom-input {
     width: 100%;
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
+    position: relative; /* Necessário para que os filhos com position: absolute sejam relativos a este contêiner */
 }
 
 .custom-input-label {
@@ -22,6 +21,8 @@
     outline: none;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
+    /* Adiciona espaçamento inferior para garantir que a mensagem de erro não se sobreponha ao texto */
+    margin-bottom: 5px;
 }
 
 .custom-input-error {
@@ -31,7 +32,8 @@
 .custom-input-error-message {
     color: red;
     font-size: 12px;
-    margin-top: 5px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
+    position: absolute;
+    bottom: -20px; /* Posiciona a mensagem de erro abaixo do input */
+    left: 0;
+    white-space: nowrap; /* Garante que o texto não quebre em várias linhas */
 }

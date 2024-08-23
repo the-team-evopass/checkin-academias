@@ -3,6 +3,8 @@ import { Layout } from "../layout/layout";
 import { PrivateRoute } from "./private";
 import { Home } from "../pages/home";
 import { Historico } from "../pages/historico";
+import { EntradaManual } from "../pages/entradaManual";
+import { CheckinEvoclube } from "../pages/checkinEvoclub";
 import { Configuracoes } from "../pages/configuracoes";
 import { Login } from "../pages/login";
 import { CriarConta } from "../pages/criarConta";
@@ -22,6 +24,14 @@ const router = createBrowserRouter([
             {
                 path: "/historico",
                 element: <PrivateRoute> <Historico/> </PrivateRoute>
+            },
+            {
+                path: "/entrada-manual",
+                element: <PrivateRoute> <EntradaManual/> </PrivateRoute>
+            },
+            {
+                path: "/checkin-evoclub",
+                element: <PrivateRoute> <CheckinEvoclube/> </PrivateRoute>
             },
             {
                 path: "/configuracoes",

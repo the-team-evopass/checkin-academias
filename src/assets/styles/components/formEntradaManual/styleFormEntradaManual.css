@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+.form-entrada-manual-container {
+    font-family: 'Poppins', sans-serif;
+    width: 95%;
+}
+
+.form-entrada-manual-title {
+    font-size: 30px;
+    font-weight: 300;
+    margin-left: 30px;
+}
+
+.form-entrada-manual-hr {
+    border: 1px solid rgb(0, 0, 0, 0.2);
+}
+
+.form-entrada-manual-input-button-container {
+    margin-left: 30px;
+}
+
+.form-entrada-manual-input-container {
+    width: min-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.button-search-infos-student-checkin {
+    height: 40px;
+    width: 40px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 6px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #ff6707;
+}
+
+.button-search-infos-student-checkin > img {
+    width: 100%;
+}
+
+.input-cpf-form-entrada-manual-custom-input-field {
+    width: 350px;
+    height: 40px;
+}
+
+/* TODO - Melhorar estilização da margem do meu botão */
+.button-submit-form-entrada-manual {
+    width: 150px;
+    height: min-content;
+    border: none;
+    border-radius: 8px;
+    margin-left: 65%;
+    padding: 10px 24px;
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    background-color: #ff904c;
+    box-shadow: 1px 2px 4px 0px rgba(0, 0, 0, 0.25);
+}

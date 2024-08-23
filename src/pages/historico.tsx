@@ -1,5 +1,5 @@
-import '../assets/styles/pages/historico/styleHistorico.css'
 import ComingSoon from '../components/comingSoonNotice/comingSoonNotice'
+import '../assets/styles/pages/historico/styleHistorico.css'
 
 export function Historico () {
     return (

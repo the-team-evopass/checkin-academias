@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+.card-student-information-container {
+    width: 80%;
+    height: 280px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #fafafa;
+    box-shadow: 1px 2px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.card-student-information-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-student-information-hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.card-student-information-footer {
+    width: 70%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 35px;
+}
+
+.student-information-custom-input-field {
+    width: 100%;
+    border: 1px solid var(--Text-200, #CAD5E0);
+    background-color: transparent;
+}
+
+.student-information-custom-input-label {
+    color: #4D4A4A;
+}
+
+.card-student-information-container > header > img {
+    border-radius: 50%;
+    width: 65px;
+}
