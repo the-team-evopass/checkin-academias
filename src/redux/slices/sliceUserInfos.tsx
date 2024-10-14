@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TicketGateConfigurationProps } from './slicesStates/sliceUserInfosStates';
-import { SliceUserInfosProps } from './slicesStates/sliceUserInfosStates';
+import { TicketGateConfigurationProps } from './slicesStates/sliceUserInfosTypes';
+import { SliceUserInfosProps } from './slicesStates/sliceUserInfosTypes';
 
 const INITIAL_STATE: SliceUserInfosProps = {
     userName: '',
