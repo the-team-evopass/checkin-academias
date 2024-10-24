@@ -16,6 +16,7 @@ import GetStudentByCPF from "../../services/api/evopass/GET/getStudentByCPF";
 
 import arrowIcon from "../../assets/imgs/svgs/arrow-right.svg";
 import "../../assets/styles/components/formEntradaManual/styleFormEntradaManual.css";
+import postDeletService from "../../services/api/evopass/POST/postDeletService";
 
 interface StudentInfosForCheckinProps {
   firstName: string;
@@ -29,6 +30,7 @@ export function FormEntradaManualEvoclub() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [cpf, setCPF] = useState<string>();
   const [showCarUserInfos, setShowCardInfos] = useState<boolean>(false);
+  const [selectedIdService, setSelectedIdService] = useState<string>("");
 
   const [studentInfosForCheckinEvoclub, setStudentInfosForCheckinEvoclub] =
     useState<StudentInfosForCheckinProps>({
@@ -109,9 +111,40 @@ export function FormEntradaManualEvoclub() {
     event.preventDefault();
   }
 
+  const handleServiceChange = (serviceId: string) => {
+    setSelectedIdService(serviceId);
+  };
+
   async function handleCheckin() {
+    const userConfirmed = window.confirm(
+      "Confirma a realização do check-in?\nPor favor, certifique-se de que o aluno está presente no balcão antes de prosseguir."
+    );
+
+    if (!userConfirmed) {
+      // Se o usuário cancelar, não faz nada
+      return;
+    }
+
     console.log("Realizando Check-in");
-    // TODO - Colocar req de delete service do asaas
+    console.log('ID: ', selectedIdService);
+    setIsLoading(true);
+  
+    try {
+      const response = await postDeletService(selectedIdService);
+      console.log(response);
+      ApplicationAlert(
+        "success",
+        "Check-in realizado com sucesso!"
+      );
+    } catch (error) {
+      console.error('Erro ao realizar o check-in:', error);
+      ApplicationAlert(
+        "error",
+        "Ocorreu um erro ao fazer o checkin do serviço."
+      );
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -154,6 +187,7 @@ export function FormEntradaManualEvoclub() {
               email={studentInfosForCheckinEvoclub.contact}
               evoclubPlan={studentInfosForCheckinEvoclubASAAS.subscriptionPlan}
               services={studentInfosForCheckinEvoclubASAAS.services}
+              onServiceChange={handleServiceChange}
             />
           </>
         )}

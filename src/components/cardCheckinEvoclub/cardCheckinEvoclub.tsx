@@ -10,9 +10,10 @@ interface CardStudentInformationProps {
     email: string;
     evoclubPlan: string;
     services: StudentInfosForCheckinEvoclubService[];
+    onServiceChange: (serviceId: string) => void;
 }
 
-export function CardStudentInformationEvoclub({ firstName, lastName, email, evoclubPlan, services }: CardStudentInformationProps) {
+export function CardStudentInformationEvoclub({ firstName, lastName, email, evoclubPlan, services, onServiceChange }: CardStudentInformationProps) {
 
     const serviceCount = services.reduce((acc, service) => {
         const serviceName = service.paymentLink.name;
@@ -25,6 +26,12 @@ export function CardStudentInformationEvoclub({ firstName, lastName, email, evoc
     }, {} as Record<string, StudentInfosForCheckinEvoclubService & { count: number }>);
 
     const groupedServices = Object.values(serviceCount);
+
+    const handleServiceSelection = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const selectedServiceId = event.target.value;
+        console.log("ID do serviço selecionado:", selectedServiceId);
+        onServiceChange(selectedServiceId);
+    };
 
     return (
         <div className="card-student-information-container">
@@ -47,7 +54,7 @@ export function CardStudentInformationEvoclub({ firstName, lastName, email, evoc
                 />
                 <div className="custom-dropdown">
                     <label className="custom-dropdown-label" htmlFor="services">Serviços disponíveis:</label>
-                    <select className="custom-dropdown-field" id="services" name="services">
+                    <select className="custom-dropdown-field" id="services" name="services" onChange={handleServiceSelection}>
                         {groupedServices.map((service) => (
                             <option key={service.id} value={service.id}>
                                 {`${service.paymentLink.name} | Quantidade: ${service.count}`}
