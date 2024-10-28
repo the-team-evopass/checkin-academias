@@ -12,11 +12,11 @@ import formatCPFToSTR from "../../utils/formats/formatCPFToSTR";
 
 import { GetStudentPlanAndServiceOnEvoclub } from "../../services/api/evopass/GET/getStudentPlanAndServiceOnEvoclub";
 
-import GetStudentByCPF from "../../services/api/evopass/GET/getStudentByCPF";
 
 import arrowIcon from "../../assets/imgs/svgs/arrow-right.svg";
 import "../../assets/styles/components/formEntradaManual/styleFormEntradaManual.css";
 import postDeletService from "../../services/api/evopass/POST/postDeletService";
+import GetStudentInAsaasByCPF from "../../services/api/evopass/GET/GetStudentInAsaasByCPF";
 
 interface StudentInfosForCheckinProps {
   firstName: string;
@@ -53,59 +53,55 @@ export function FormEntradaManualEvoclub() {
 
   async function handleSearchStudentsInfos() {
     setIsLoading(true);
-
+  
     console.log("Procurando informações do aluno");
-
+  
     if (validateCPF(cpf ? cpf : "") === true) {
       try {
         const checkinEvoclubASAASResponse =
           await GetStudentPlanAndServiceOnEvoclub(
             formatCPFToSTR(cpf ? cpf : "")
           );
-        const studentResponse = await GetStudentByCPF(
-          formatCPFToSTR(cpf ? cpf : "")
-        );
-        const studentData = studentResponse.data[0];
-
-        setStudentInfosForCheckinEvoclubASAAS({
-          cpf: checkinEvoclubASAASResponse.cpf,
-          subscriptionPlan: checkinEvoclubASAASResponse.subscriptionPlan,
-          subscriptionValue: checkinEvoclubASAASResponse.subscriptionValue,
-          subscriptionId: checkinEvoclubASAASResponse.subscriptionId,
-          services: checkinEvoclubASAASResponse.services,
-        });
-
-        setStudentInfosForCheckinEvoclub({
-          firstName: studentData.firstName,
-          lastName: studentData.lastName,
-          CPF: formatSTRToCPF(studentData.cpf),
-          contact: studentData.contacts[0].contact,
-        });
-
-        // TODO - Colocar uma validação de conteúdo para ver se as informações foram encontradas (usuário/ assinatura)
-        // Tenho que arrumar o rota de getUser, tenho que pegar essas informações no asaas
-
-        setShowCardInfos(true);
+  
+        const studentData = await GetStudentInAsaasByCPF(formatCPFToSTR(cpf ? cpf : ""));
+  
+        // Verifique se os dados foram retornados antes de definir o estado
+        if (studentData) {
+          setStudentInfosForCheckinEvoclubASAAS({
+            cpf: checkinEvoclubASAASResponse.cpf,
+            subscriptionPlan: checkinEvoclubASAASResponse.subscriptionPlan,
+            subscriptionValue: checkinEvoclubASAASResponse.subscriptionValue,
+            subscriptionId: checkinEvoclubASAASResponse.subscriptionId,
+            services: checkinEvoclubASAASResponse.services,
+          });
+  
+          setStudentInfosForCheckinEvoclub({
+            firstName: studentData.firstName,
+            lastName: studentData.lastName,
+            CPF: formatSTRToCPF(studentData.CPF),
+            contact: studentData.contact,
+          });
+  
+          setShowCardInfos(true);
+        } else {
+          ApplicationAlert("error", "Nenhum registro encontrado para este CPF.");
+        }
+  
         setIsLoading(false);
       } catch (error) {
         ApplicationAlert(
           "error",
           "Ocorreu um erro ao buscar as informações. Tente novamente."
         );
-        console.error(
-          "Erro ao buscar dados do estudante no gestão ou asaas:",
-          error
-        );
+        console.error("Erro ao buscar dados do estudante no gestão ou asaas:", error);
         setIsLoading(false);
       }
     } else {
-      ApplicationAlert(
-        "error",
-        "Digite um CPF válido para realizar o Check-in"
-      );
+      ApplicationAlert("error", "Digite um CPF válido para realizar o Check-in");
       setIsLoading(false);
     }
   }
+  
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
@@ -117,7 +113,7 @@ export function FormEntradaManualEvoclub() {
 
   async function handleCheckin() {
     const userConfirmed = window.confirm(
-      "Confirma a realização do check-in?\nPor favor, certifique-se de que o aluno está presente no balcão antes de prosseguir."
+      "Confirmar check-in?\nEssa ação implicará na validação do atendimento como REALIZADO e não pode ser desfeita."
     );
 
     if (!userConfirmed) {
