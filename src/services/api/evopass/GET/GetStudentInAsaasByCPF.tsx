@@ -21,8 +21,7 @@ export default async function GetStudentInAsaasByCPF(CPF: string) {
 
       // Retorna apenas as informações necessárias
       return {
-        firstName: recentCustomer.name ? recentCustomer.name.split(" ")[0] : "N/A",
-        lastName: recentCustomer.name ? recentCustomer.name.split(" ").slice(1).join(" ") : "N/A",
+        name: recentCustomer.name || "N/A",
         CPF: recentCustomer.cpfCnpj || "N/A",
         contact: recentCustomer.email || recentCustomer.phone || recentCustomer.mobilePhone || "N/A"
       };

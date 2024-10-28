@@ -19,8 +19,7 @@ import postDeletService from "../../services/api/evopass/POST/postDeletService";
 import GetStudentInAsaasByCPF from "../../services/api/evopass/GET/GetStudentInAsaasByCPF";
 
 interface StudentInfosForCheckinProps {
-  firstName: string;
-  lastName: string;
+  name: string;
   CPF: string;
   contact: string;
 }
@@ -34,8 +33,7 @@ export function FormEntradaManualEvoclub() {
 
   const [studentInfosForCheckinEvoclub, setStudentInfosForCheckinEvoclub] =
     useState<StudentInfosForCheckinProps>({
-      firstName: "John",
-      lastName: "Doe",
+      name: "John",
       CPF: "000.000.000-00",
       contact: "felipe@evopass.app.br",
     });
@@ -76,8 +74,7 @@ export function FormEntradaManualEvoclub() {
           });
   
           setStudentInfosForCheckinEvoclub({
-            firstName: studentData.firstName,
-            lastName: studentData.lastName,
+            name: studentData.name,
             CPF: formatSTRToCPF(studentData.CPF),
             contact: studentData.contact,
           });
@@ -178,8 +175,7 @@ export function FormEntradaManualEvoclub() {
         {showCarUserInfos && (
           <>
             <CardStudentInformationEvoclub
-              firstName={studentInfosForCheckinEvoclub.firstName}
-              lastName={studentInfosForCheckinEvoclub.lastName}
+              name={studentInfosForCheckinEvoclub.name}
               email={studentInfosForCheckinEvoclub.contact}
               evoclubPlan={studentInfosForCheckinEvoclubASAAS.subscriptionPlan}
               services={studentInfosForCheckinEvoclubASAAS.services}

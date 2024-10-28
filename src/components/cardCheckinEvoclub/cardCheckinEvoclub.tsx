@@ -5,15 +5,14 @@ import { StudentInfosForCheckinEvoclubService } from '../../types/components/stu
 import '../../assets/styles/components/cardStudentInformation/styleCardStudentInformation.css';
 
 interface CardStudentInformationProps {
-    firstName: string;
-    lastName: string;
+    name: string;
     email: string;
     evoclubPlan: string;
     services: StudentInfosForCheckinEvoclubService[];
     onServiceChange: (serviceId: string) => void;
 }
 
-export function CardStudentInformationEvoclub({ firstName, lastName, email, evoclubPlan, services, onServiceChange }: CardStudentInformationProps) {
+export function CardStudentInformationEvoclub({ name, email, evoclubPlan, services, onServiceChange }: CardStudentInformationProps) {
 
     const serviceCount = services.reduce((acc, service) => {
         const serviceName = service.paymentLink.name;
@@ -39,7 +38,7 @@ export function CardStudentInformationEvoclub({ firstName, lastName, email, evoc
             <br />
             <header className="card-student-information-header">
                 <img src={defaultUserIMG} alt="" />
-                <SubLine textLine1={`${firstName} ${lastName}`} textLine2={`${email}`} />
+                <SubLine textLine1={`${name}`} textLine2={`${email}`} />
             </header>
             <hr className="card-student-information-hr" />
             <footer className="card-student-information-footer">
