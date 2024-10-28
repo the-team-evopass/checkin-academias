@@ -19,7 +19,6 @@ export default async function GetStudentInAsaasByCPF(CPF: string) {
         new Date(customer.dateCreated) > new Date(latest.dateCreated) ? customer : latest
       );
 
-      // Retorna apenas as informações necessárias
       return {
         name: recentCustomer.name || "N/A",
         CPF: recentCustomer.cpfCnpj || "N/A",

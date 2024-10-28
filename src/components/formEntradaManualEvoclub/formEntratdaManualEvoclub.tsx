@@ -109,8 +109,28 @@ export function FormEntradaManualEvoclub() {
   };
 
   async function handleCheckin() {
+  
+    const selectedService = studentInfosForCheckinEvoclubASAAS.services.find(
+      (service) => service.id === selectedIdService
+    );
+    
+    if (!selectedService) {
+      ApplicationAlert("error", "Serviço selecionado não encontrado.");
+      return; 
+    }
+    
+    //Converção para pegarmos a quantidade de serviços
+    const totalSessions = studentInfosForCheckinEvoclubASAAS.services.filter(
+      (service) => service.paymentLink.id === selectedService.paymentLink.id
+    ).length;
+    
+    const remainingCount = totalSessions - 1;
+    
     const userConfirmed = window.confirm(
-      "Confirmar check-in?\nEssa ação implicará na validação do atendimento como REALIZADO e não pode ser desfeita."
+      `Confirmar check-in?\n` +
+      `Serviço: ${selectedService ? selectedService.paymentLink.name : "N/A"}\n` +
+      `Quantidade restante após check-in: ${remainingCount > 0 ? remainingCount : "Sem saldo"}\n` +
+      `Essa ação implicará na validação do atendimento como REALIZADO e não pode ser desfeita.`
     );
 
     if (!userConfirmed) {
@@ -157,6 +177,8 @@ export function FormEntradaManualEvoclub() {
             label="CPF"
             type="text"
             placeholder="000.000.000-00"
+            maxLength={14}
+            pattern="[0-9./]+"
             onChange={(e) => setCPF(formatSTRToCPF(e))}
             value={cpf}
             error={validateCPF(cpf ? cpf : "") == false}

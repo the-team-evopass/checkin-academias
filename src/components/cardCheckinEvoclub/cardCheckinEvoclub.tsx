@@ -52,13 +52,23 @@ export function CardStudentInformationEvoclub({ name, email, evoclubPlan, servic
                     disabled
                 />
                 <div className="custom-dropdown">
-                    <label className="custom-dropdown-label" htmlFor="services">Serviços disponíveis:</label>
-                    <select className="custom-dropdown-field" id="services" name="services" onChange={handleServiceSelection}>
-                        {groupedServices.map((service) => (
-                            <option key={service.id} value={service.id}>
-                                {`${service.paymentLink.name} | Quantidade: ${service.count}`}
-                            </option>
-                        ))}
+                <label className="custom-dropdown-label" htmlFor="services">Serviços disponíveis:</label>
+                    <select 
+                        className="custom-dropdown-field" 
+                        id="services" 
+                        name="services" 
+                        onChange={handleServiceSelection} 
+                        disabled={groupedServices.length === 0} // Desativa o select se não houver serviços
+                    >
+                        {groupedServices.length > 0 ? (
+                            groupedServices.map((service) => (
+                                <option key={service.id} value={service.id}>
+                                    {`${service.paymentLink.name} | Quantidade: ${service.count}`}
+                                </option>
+                            ))
+                        ) : (
+                            <option value="">Não há opções disponíveis</option> 
+                        )}
                     </select>
                     {/* Se houver uma mensagem de erro, você pode adicionar aqui */}
                     {/* <span className="custom-dropdown-error-message">Mensagem de erro</span> */}
