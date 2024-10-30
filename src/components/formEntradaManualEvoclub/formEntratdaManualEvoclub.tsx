@@ -149,6 +149,8 @@ export function FormEntradaManualEvoclub() {
         "success",
         "Check-in realizado com sucesso!"
       );
+      setShowCardInfos(false);
+      setCPF("");
     } catch (error) {
       console.error('Erro ao realizar o check-in:', error);
       ApplicationAlert(
