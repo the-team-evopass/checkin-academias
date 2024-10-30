@@ -6,7 +6,7 @@ export async function GetStudentPlanAndServiceOnEvoclub (cpf:string) {
     const config = {
       method: 'get',
       maxBodyLength: Infinity,
-      url: `${BaseUrl}/service-subscription/${cpf}?status=${'RECEIVED'}`,
+      url: `${BaseUrl}/service-subscription/${cpf}?status=${'RECEIVED'}&activateFilter=true`,
       headers: { }
     };
     

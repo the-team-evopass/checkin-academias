@@ -3,6 +3,7 @@ import defaultUserIMG from '../../assets/imgs/userPhoto/defaultUserPhoto.png';
 import { CustomInput } from '../../class/input/classInput';
 import { StudentInfosForCheckinEvoclubService } from '../../types/components/studentInfosForCheckinEvoclubTypes';
 import '../../assets/styles/components/cardStudentInformation/styleCardStudentInformation.css';
+import { useEffect } from 'react';
 
 interface CardStudentInformationProps {
     name: string;
@@ -25,6 +26,12 @@ export function CardStudentInformationEvoclub({ name, email, evoclubPlan, servic
     }, {} as Record<string, StudentInfosForCheckinEvoclubService & { count: number }>);
 
     const groupedServices = Object.values(serviceCount);
+
+    useEffect(() => {
+        if (groupedServices.length === 1) {
+            onServiceChange(groupedServices[0].id);
+        }
+    }, [groupedServices, onServiceChange])
 
     const handleServiceSelection = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedServiceId = event.target.value;
@@ -58,8 +65,8 @@ export function CardStudentInformationEvoclub({ name, email, evoclubPlan, servic
                         id="services" 
                         name="services" 
                         onChange={handleServiceSelection} 
-                        disabled={groupedServices.length === 0} // Desativa o select se não houver serviços
-                    >
+                        // disabled={groupedServices.length === 0} 
+                    >                        
                         {groupedServices.length > 0 ? (
                             groupedServices.map((service) => (
                                 <option key={service.id} value={service.id}>
@@ -67,7 +74,7 @@ export function CardStudentInformationEvoclub({ name, email, evoclubPlan, servic
                                 </option>
                             ))
                         ) : (
-                            <option value="">Não há opções disponíveis</option> 
+                            <option value="">Não há serviços disponíveis</option> 
                         )}
                     </select>
                     {/* Se houver uma mensagem de erro, você pode adicionar aqui */}

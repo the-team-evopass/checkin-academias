@@ -15,7 +15,7 @@ import { GetStudentPlanAndServiceOnEvoclub } from "../../services/api/evopass/GE
 
 import arrowIcon from "../../assets/imgs/svgs/arrow-right.svg";
 import "../../assets/styles/components/formEntradaManual/styleFormEntradaManual.css";
-import postDeletService from "../../services/api/evopass/POST/postDeletService";
+import patchConsumeService from "../../services/api/evopass/POST/patchConsumeService";
 import GetStudentInAsaasByCPF from "../../services/api/evopass/GET/GetStudentInAsaasByCPF";
 
 interface StudentInfosForCheckinProps {
@@ -143,7 +143,7 @@ export function FormEntradaManualEvoclub() {
     setIsLoading(true);
   
     try {
-      const response = await postDeletService(selectedIdService);
+      const response = await patchConsumeService(selectedIdService);
       console.log(response);
       ApplicationAlert(
         "success",

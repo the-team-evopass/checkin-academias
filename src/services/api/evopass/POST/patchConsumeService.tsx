@@ -1,14 +1,16 @@
 import axios from "axios";
 import BaseUrl from "../../baseurl/BaseUrl";
 
-export default async function postDeletServiceby (idService: string) {
+export default async function patchConsumeService (idService: string) {
 
-  const data = '';
+  const data = {
+    isActive: false,
+  };
   
   const config = {
-    method: 'post',
+    method: 'patch',
     maxBodyLength: Infinity,
-    url: `${BaseUrl}/payments/${idService}?subAccount=${'EVOCLUB_REALITY'}`,
+    url: `${BaseUrl}/purchased-service/${idService}`,
     data : data
   };
   

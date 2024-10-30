@@ -5,7 +5,7 @@ export default async function GetStudentInAsaasByCPF(CPF: string) {
   const config = {
     method: 'get',
     maxBodyLength: Infinity,
-    url: `${BaseUrl}/customers?subAccount=SIMULATE&cpfCnpj=${CPF}`,
+    url: `${BaseUrl}/customers?subAccount=EVOCLUB_REALITY&cpfCnpj=${CPF}`,
     headers: {}
   };
 
