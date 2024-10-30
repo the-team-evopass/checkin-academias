@@ -62,7 +62,7 @@ export function FormLogin () {
                     })
                 }
                 dispatch(changeStateIsloading(false))
-                navigate('/')
+                navigate('/checkin-evoclub')
             } else {
                 dispatch(changeStateIsloading(false))
                 ApplicationAlert('error', 'E-Mail ou senha inválidos')

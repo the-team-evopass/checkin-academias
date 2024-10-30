@@ -9,6 +9,12 @@
     box-shadow: 1px 2px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
+.card-student-information-container > h1 {
+    font-family: 'Poppins';
+    font-weight: 400;
+    color: #FF6707;
+}
+
 .card-student-information-header {
     display: flex;
     flex-direction: row;
@@ -41,4 +47,45 @@
 .card-student-information-container > header > img {
     border-radius: 50%;
     width: 65px;
+}
+
+.custom-dropdown {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    position: relative; /* Necessário para que os filhos com position: absolute sejam relativos a este contêiner */
+}
+
+.custom-dropdown-label {
+    margin-bottom: 2px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+.custom-dropdown-field {
+    width: 100%;
+    height: 32px;
+    padding: 5px;
+    padding-left: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    /* Adiciona espaçamento inferior para garantir que a mensagem de erro não se sobreponha ao texto */
+    margin-bottom: 5px;
+}
+
+.custom-dropdown-error {
+    border-color: red;
+}
+
+.custom-dropdown-error-message {
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    bottom: -20px; /* Posiciona a mensagem de erro abaixo do input */
+    left: 0;
+    white-space: nowrap; /* Garante que o texto não quebre em várias linhas */
 }

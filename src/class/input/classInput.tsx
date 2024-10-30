@@ -7,6 +7,8 @@ interface CustomInputProps {
     type: string;
     placeholder?: string;
     value?: string;
+    maxLength?: number;
+    pattern?: string;
     error?: boolean;
     errorMessage?: string;
     onChange: (value: string) => void;
@@ -15,7 +17,7 @@ interface CustomInputProps {
     [key: string]: any;
 }
 
-export function CustomInput({ classScopeName, isLabel, label, type, placeholder, value, error, errorMessage, onChange, options, ...props }: CustomInputProps): JSX.Element {
+export function CustomInput({ classScopeName, isLabel, label, type, placeholder, value, maxLength, pattern, error, errorMessage, onChange, options, ...props }: CustomInputProps): JSX.Element {
     
     return (
         <div className={`${classScopeName}-custom-input custom-input ${error ? 'custom-input-error' : ''}`}>
@@ -45,6 +47,8 @@ export function CustomInput({ classScopeName, isLabel, label, type, placeholder,
                         id={label} 
                         placeholder={placeholder} 
                         value={value}
+                        maxLength={maxLength}
+                        pattern={pattern}
                         onChange={(e) => onChange(e.target.value)} 
                         className={`${classScopeName}-custom-input-field custom-input-field`}
                         {...props} // Spread props to include any additional properties

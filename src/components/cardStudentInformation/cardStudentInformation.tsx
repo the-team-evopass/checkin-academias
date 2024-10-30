@@ -12,11 +12,14 @@ interface CardStudentInformationProps {
     endereço: string
 }
 
+
+
 export function CardStudentInformation ({firstName, lastName, CPF, dataNascimento, empresa, endereço}:CardStudentInformationProps) {
     return (
         <div className='card-student-information-container'>
             <header className='card-student-information-header'>
                 <img src={defaultUserIMG} alt="" />
+                {/* TODO - Deixar o email dinamico */}
                 <SubLine textLine1={`${firstName} ${lastName}`} textLine2='felipemelo.unidade@gmail.com'/>
             </header>
             <hr className='card-student-information-hr' />

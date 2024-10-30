@@ -1,17 +1,16 @@
 import axios from "axios";
 import BaseUrl from "../../baseurl/BaseUrl";
 
-export default async function postCreateCheckinRedundant (studentCPF: string, accessToken: string) {
+export default async function patchConsumeService (idService: string) {
 
-  const data = '';
+  const data = {
+    isActive: false,
+  };
   
   const config = {
-    method: 'post',
+    method: 'patch',
     maxBodyLength: Infinity,
-    url: `${BaseUrl}/check-in/by-employee/${studentCPF}`,
-    headers: { 
-      'Authorization': `Bearer ${accessToken}`,
-    },
+    url: `${BaseUrl}/purchased-service/${idService}`,
     data : data
   };
   

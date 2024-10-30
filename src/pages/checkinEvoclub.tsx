@@ -1,10 +1,16 @@
-import ComingSoon from "../components/comingSoonNotice/comingSoonNotice"
+import { ToastContainer } from "react-toastify"
+import { Header } from "../components/header/header"
+import { FormEntradaManualEvoclub } from "../components/formEntradaManualEvoclub/formEntratdaManualEvoclub"
 import '../assets/styles/pages/checkinEvoclub/styleCheckinEvoclub.css'
 
 export function CheckinEvoclube () {
     return (
-        <div className='checkin-evoclub-container'>
-            <ComingSoon/>
-        </div>
+        <>
+            <ToastContainer/>
+            <div className='checkin-evoclub-container'>
+                <Header/>
+                <FormEntradaManualEvoclub/>
+            </div>
+        </>
     )
 }

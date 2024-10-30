@@ -11,8 +11,8 @@ import formatDate from '../../utils/formats/fomatDate';
 import GetStudentByCPF from '../../services/api/evopass/GET/getStudentByCPF';
 import GetCompanyByID from '../../services/api/evopass/GET/getCompanyByID';
 import arrowIcon from '../../assets/imgs/svgs/arrow-right.svg';
-import '../../assets/styles/components/formEntradaManual/styleFormEntradaManual.css';
 import postCreateCheckinRedundant from '../../services/api/evopass/POST/poscreateCheckinRedundant';
+import '../../assets/styles/components/formEntradaManual/styleFormEntradaManual.css';
 
 interface StudentInfosForCheckinProps {
     firstName: string;
@@ -40,6 +40,7 @@ export function FormEntradaManual() {
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [cpf, setCPF] = useState<string>();
     const [showCarUserInfos, setShowCardInfos] = useState<boolean>(false)
+    // TODO - Retirar esse estado inicial do meu useState
     const [studentInfosForCheckin, setStudentInfosForCheckin] = useState<StudentInfosForCheckinProps>({
         firstName: 'John',
         lastName: 'Doe',
