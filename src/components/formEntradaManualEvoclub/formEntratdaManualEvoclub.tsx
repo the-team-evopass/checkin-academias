@@ -12,7 +12,6 @@ import formatCPFToSTR from "../../utils/formats/formatCPFToSTR";
 
 import { GetStudentPlanAndServiceOnEvoclub } from "../../services/api/evopass/GET/getStudentPlanAndServiceOnEvoclub";
 
-
 import arrowIcon from "../../assets/imgs/svgs/arrow-right.svg";
 import "../../assets/styles/components/formEntradaManual/styleFormEntradaManual.css";
 import patchConsumeService from "../../services/api/evopass/POST/patchConsumeService";
@@ -51,18 +50,20 @@ export function FormEntradaManualEvoclub() {
 
   async function handleSearchStudentsInfos() {
     setIsLoading(true);
-  
+
     console.log("Procurando informações do aluno");
-  
+
     if (validateCPF(cpf ? cpf : "") === true) {
       try {
         const checkinEvoclubASAASResponse =
           await GetStudentPlanAndServiceOnEvoclub(
             formatCPFToSTR(cpf ? cpf : "")
           );
-  
-        const studentData = await GetStudentInAsaasByCPF(formatCPFToSTR(cpf ? cpf : ""));
-  
+
+        const studentData = await GetStudentInAsaasByCPF(
+          formatCPFToSTR(cpf ? cpf : "")
+        );
+
         // Verifique se os dados foram retornados antes de definir o estado
         if (studentData) {
           setStudentInfosForCheckinEvoclubASAAS({
@@ -72,33 +73,41 @@ export function FormEntradaManualEvoclub() {
             subscriptionId: checkinEvoclubASAASResponse.subscriptionId,
             services: checkinEvoclubASAASResponse.services,
           });
-  
+
           setStudentInfosForCheckinEvoclub({
             name: studentData.name,
             CPF: formatSTRToCPF(studentData.CPF),
             contact: studentData.contact,
           });
-  
+
           setShowCardInfos(true);
         } else {
-          ApplicationAlert("error", "Nenhum registro encontrado para este CPF.");
+          ApplicationAlert(
+            "error",
+            "Nenhum registro encontrado para este CPF."
+          );
         }
-  
+
         setIsLoading(false);
       } catch (error) {
         ApplicationAlert(
           "error",
           "Ocorreu um erro ao buscar as informações. Tente novamente."
         );
-        console.error("Erro ao buscar dados do estudante no gestão ou asaas:", error);
+        console.error(
+          "Erro ao buscar dados do estudante no gestão ou asaas:",
+          error
+        );
         setIsLoading(false);
       }
     } else {
-      ApplicationAlert("error", "Digite um CPF válido para realizar o Check-in");
+      ApplicationAlert(
+        "error",
+        "Digite um CPF válido para realizar o Check-in"
+      );
       setIsLoading(false);
     }
   }
-  
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
@@ -109,28 +118,31 @@ export function FormEntradaManualEvoclub() {
   };
 
   async function handleCheckin() {
-  
     const selectedService = studentInfosForCheckinEvoclubASAAS.services.find(
       (service) => service.id === selectedIdService
     );
-    
+
     if (!selectedService) {
       ApplicationAlert("error", "Serviço selecionado não encontrado.");
-      return; 
+      return;
     }
-    
+
     //Converção para pegarmos a quantidade de serviços
     const totalSessions = studentInfosForCheckinEvoclubASAAS.services.filter(
       (service) => service.paymentLink.id === selectedService.paymentLink.id
     ).length;
-    
+
     const remainingCount = totalSessions - 1;
-    
+
     const userConfirmed = window.confirm(
       `Confirmar check-in?\n` +
-      `Serviço: ${selectedService ? selectedService.paymentLink.name : "N/A"}\n` +
-      `Quantidade restante após check-in: ${remainingCount > 0 ? remainingCount : "Sem saldo"}\n` +
-      `Essa ação implicará na validação do atendimento como REALIZADO e não pode ser desfeita.`
+        `Serviço: ${
+          selectedService ? selectedService.paymentLink.name : "N/A"
+        }\n` +
+        `Quantidade restante após check-in: ${
+          remainingCount > 0 ? remainingCount : "Sem saldo"
+        }\n` +
+        `Essa ação implicará na validação do atendimento como REALIZADO e não pode ser desfeita.`
     );
 
     if (!userConfirmed) {
@@ -139,20 +151,17 @@ export function FormEntradaManualEvoclub() {
     }
 
     console.log("Realizando Check-in");
-    console.log('ID: ', selectedIdService);
+    console.log("ID: ", selectedIdService);
     setIsLoading(true);
-  
+
     try {
       const response = await patchConsumeService(selectedIdService);
       console.log(response);
-      ApplicationAlert(
-        "success",
-        "Check-in realizado com sucesso!"
-      );
+      ApplicationAlert("success", "Check-in realizado com sucesso!");
       setShowCardInfos(false);
       setCPF("");
     } catch (error) {
-      console.error('Erro ao realizar o check-in:', error);
+      console.error("Erro ao realizar o check-in:", error);
       ApplicationAlert(
         "error",
         "Ocorreu um erro ao fazer o checkin do serviço."
