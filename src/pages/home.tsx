@@ -1,13 +1,17 @@
 // import { useEffect } from 'react';
 import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 import { ToastContainer } from "react-toastify";
 import { CheckinAlert } from "../components/alerts/checkinAlert/alert";
 import { Header } from "../components/header/header";
 import { HelloUserCard } from "../components/helloUserCard/helloUserCard";
 import { TableContainer } from "../components/tableContainer/tableContainer";
 import { CardCheckin } from "../components/cardCheckin/cardcheckin";
+import { NotificationBar } from "../components/notification/notificationBar/notificationBar";
 import TableComponent from "../class/table/classTable";
 import RealtimeDatabaseListener from "../services/firebase/listeningRealtimeDatabase";
+import MeasureTimeBetweenNotification from "../utils/timer/measureTimeBetweenNotification";
+import ConvertToMilliseconds from "../utils/timer/getTimeMillisecondsFromDate";
 import "../assets/styles/pages/home/styleHome.css";
 
 interface CheckinProps {
@@ -22,7 +26,7 @@ interface UserInfosProps {
   internalID: number;
 }
 
-interface RootState {
+interface RootStateCheckin {
   checkin: CheckinProps[];
   userInfos: UserInfosProps;
 }
@@ -44,10 +48,12 @@ const data = [
 export function Home() {
   // Filtrar o ultimo checkin do meu gerenciamento de estado
 
+  const isNotificationBarActivated = useSelector((state: RootState) => state.app.isNotificationBarActivated)
+
   const checkinList: CheckinProps[] = useSelector(
-    (state: RootState) => state.checkin
+    (state: RootStateCheckin) => state.checkin
   );
-  const gymID = useSelector((state: RootState) => state.userInfos.internalID);
+  const gymID = useSelector((state: RootStateCheckin) => state.userInfos.internalID);
 
   RealtimeDatabaseListener();
 
@@ -56,16 +62,19 @@ export function Home() {
       <ToastContainer />
       <ul className="ul-render">
         {checkinList &&
-          checkinList.map((checkin, index) => (
-            <CheckinAlert key={index} type="notifycheckin">
-              <CardCheckin
-                nome={checkin.name}
-                userPhotoURL={checkin.image}
-                gymID={`${gymID}`}
-                idStudent={checkin.idUser.toString()}
-              />
-            </CheckinAlert>
-          ))}
+          checkinList.map(
+            (checkin, index) =>
+              MeasureTimeBetweenNotification(ConvertToMilliseconds(checkin.time),15000) && (
+                <CheckinAlert key={index} type="notifycheckin">
+                  <CardCheckin
+                    nome={checkin.name}
+                    userPhotoURL={checkin.image}
+                    gymID={`${gymID}`}
+                    idStudent={checkin.idUser.toString()}
+                  />
+                </CheckinAlert>
+              )
+          )}
       </ul>
       <div className="home-container">
         <Header />
@@ -79,6 +88,7 @@ export function Home() {
           />
         </TableContainer>
       </div>
+      <NotificationBar isCollapsed = {isNotificationBarActivated}/>
     </>
   );
 }

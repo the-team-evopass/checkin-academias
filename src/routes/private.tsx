@@ -8,24 +8,12 @@ import Timer from '../utils/timer/timer';
 interface PrivateRouteProps {
     children: ReactNode;
 }
-
-// // Defina o tipo RootState aqui
-// interface RootState {
-//     userInfos: {
-//         loggedInUserToken: string; // Supondo que loggedInUserToken é do tipo string
-//         // Outros campos do estado, se houver
-//     };
-//     // Outros reducers e seus estados, se houver
-// }
   
 export function PrivateRoute({ children }: PrivateRouteProps) {
 
     const userAccessToken = useSelector((state: RootState) => state.userInfos.loggedInUserToken);
 
     const navigate = useNavigate();
-
-    // colocar um useState para não deixar o usuário ver uma tela privada.
-    // O meu private retorna o children antes de receber o retorno da função privateRouter 
     
     privateRouter();
     

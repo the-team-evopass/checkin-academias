@@ -4,7 +4,7 @@ import { FormResetPassword } from "../components/formResetPassword/formResetPass
 
 export function RecuperarSenha() {
   return (
-    <DefaultScreen classScopeName="cadastro" logoPath={logo}>
+    <DefaultScreen classScopeName="recuperar-senha" logoPath={logo}>
       <>
         <FormResetPassword />
       </>
