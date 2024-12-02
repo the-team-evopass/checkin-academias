@@ -1,12 +1,16 @@
 import axios from "axios";
 import BaseUrl from "../../baseurl/BaseUrl";
+import store from "../../../../redux/store";
 
 export default async function GetStudentInAsaasByCPF(CPF: string) {
+  const token = store.getState().userInfos.loggedInUserToken; 
   const config = {
     method: 'get',
     maxBodyLength: Infinity,
     url: `${BaseUrl}/customers?subAccount=EVOCLUB_REALITY&cpfCnpj=${CPF}`,
-    headers: {}
+    headers: {
+      Authorization: `Bearer ${token}`,
+  },
   };
 
   try {

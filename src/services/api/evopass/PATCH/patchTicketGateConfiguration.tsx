@@ -1,7 +1,9 @@
 import axios from 'axios';
 import BaseUrl from '../../baseurl/BaseUrl';
+import store from '../../../../redux/store';
 
 export default async function patchTicketGateConfiguration ( unitID: string, direction: string, ticketGateIP: string, ticketGatePort: number, preferenceDirection: string) {
+  const token = store.getState().userInfos.loggedInUserToken; 
     
   const data = JSON.stringify({
     'direction': direction,
@@ -15,6 +17,7 @@ export default async function patchTicketGateConfiguration ( unitID: string, dir
     maxBodyLength: Infinity,
     url: `${BaseUrl}/ticket-configuration/${unitID}`,
     headers: { 
+      Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json'
     },
     data : data

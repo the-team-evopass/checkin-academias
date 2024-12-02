@@ -1,5 +1,6 @@
 import axios from "axios";
 import BaseUrl from "../baseurl/BaseUrl";
+import store from "../../../redux/store";
 
 interface ResposeData {
     id: number;
@@ -10,12 +11,15 @@ interface ResposeData {
 }
 
 export default async function allHistoricalCheckIn( gymID: number) {
+    const token = store.getState().userInfos.loggedInUserToken; 
     
     const config = {
       method: 'get',
       maxBodyLength: Infinity,
       url: `${BaseUrl}/check-in`,
-      headers: { },
+      headers: {
+        Authorization: `Bearer ${token}`,
+    },
       data : ''
     };
     
