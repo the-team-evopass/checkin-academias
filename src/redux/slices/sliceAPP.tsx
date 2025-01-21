@@ -10,7 +10,7 @@ export interface SliceAppState {
 const INITIAL_STATE: SliceAppState = {
   isLoading: false,
   isLogged: null,
-  isNotificationBarActivated: true,
+  isNotificationBarActivated: false,
 };
 
 const sliceAPP = createSlice({

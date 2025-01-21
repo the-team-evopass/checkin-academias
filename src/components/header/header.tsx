@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-import { useDispatch } from "react-redux";
-import { RootState } from '../../redux/store';
-import { changeStateIsNotificationBarActivated } from '../../redux/slices/sliceAPP';
+// import { useDispatch } from "react-redux";
+// import { RootState } from '../../redux/store';
+// import { changeStateIsNotificationBarActivated } from '../../redux/slices/sliceAPP';
 import { NotificationBadge } from '../notification/notificationBadge/notificationBadge.tsx';
 import '../../assets/styles/components/header/styleHeader.css';
 
@@ -18,14 +18,14 @@ interface RootStateUserInfos {
 
 export function Header() {
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
-    const isNotificationBarActivated = useSelector((state: RootState) => state.app.isNotificationBarActivated)
+    // const isNotificationBarActivated = useSelector((state: RootState) => state.app.isNotificationBarActivated)
 
-    function handleAlternateStateNotificationBar () {
-        dispatch(changeStateIsNotificationBarActivated(false));
-        return isNotificationBarActivated
-    }
+    // function handleAlternateStateNotificationBar () {
+    //     dispatch(changeStateIsNotificationBarActivated(false));
+    //     return isNotificationBarActivated
+    // }
 
     const userInfos = useSelector((state: RootStateUserInfos) => state.userInfos);
 
@@ -34,7 +34,7 @@ export function Header() {
             <div className='header-notification'>
                 <NotificationBadge
                     countNotification={0}
-                    onClick={() => handleAlternateStateNotificationBar()}
+                    onClick={() => () =>(null)}
                 />
             </div>
             <div className='header-user-informations'>
