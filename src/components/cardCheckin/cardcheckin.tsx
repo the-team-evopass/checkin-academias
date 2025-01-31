@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import denyOrAuthorizeCheckin from "../../services/api/evopass/denyOrAuthorizeCheckin";
+import patchDenyOrAuthorizeCheckin from "../../services/api/evopass/PATCH/patchDenyOrAuthorizeCheckin";
 import loginControlID from "../../services/controlID/loginControlID";
 import aberturaRemota from "../../services/controlID/aberturaRemota";
 import ConsoleLogHMG from "../../utils/consoleLogHMG/consoleLogHMG";
@@ -30,7 +30,7 @@ export function CardCheckin({
 
   async function handleAuthorizeCheckin() {
     ConsoleLogHMG("Autorizando checkin...");
-    await denyOrAuthorizeCheckin(gymID, idStudent);
+    await patchDenyOrAuthorizeCheckin(gymID, idStudent);
     await loginControlID(ticketGateIP, ticketGatePort).then((myToken) => {
       aberturaRemota(
         myToken,

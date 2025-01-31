@@ -10,7 +10,7 @@ interface ResposeData {
     isChecked: boolean;
 }
 
-export default async function allHistoricalCheckIn( gymID: number) {
+export default async function allHistoricalCheckIn(gymID: number) {
     const token = store.getState().userInfos.loggedInUserToken; 
     
     const config = {
