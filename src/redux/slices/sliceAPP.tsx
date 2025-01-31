@@ -4,11 +4,13 @@ import { Draft } from 'immer';
 export interface SliceAppState {
   isLoading: boolean;
   isLogged: boolean | null;
+  isNotificationBarActivated: boolean
 }
 
 const INITIAL_STATE: SliceAppState = {
   isLoading: false,
   isLogged: null,
+  isNotificationBarActivated: false,
 };
 
 const sliceAPP = createSlice({
@@ -21,8 +23,11 @@ const sliceAPP = createSlice({
     changeStateIsLogged(state: Draft<SliceAppState>, { payload }: PayloadAction<boolean>) {
       state.isLogged = payload;
     },
+    changeStateIsNotificationBarActivated(state: Draft<SliceAppState>, { payload }: PayloadAction<boolean>) {
+      state.isNotificationBarActivated = payload;
+    },
   },
 });
 
 export default sliceAPP.reducer;
-export const { changeStateIsloading, changeStateIsLogged } = sliceAPP.actions;
+export const { changeStateIsloading, changeStateIsLogged, changeStateIsNotificationBarActivated } = sliceAPP.actions;

@@ -25,6 +25,7 @@ export default async function aberturaRemota (tokenSession: string, ticketGateIP
     try {
         const response = await axios.request(config);
         ConsoleLogHMG(response)
+        console.log(response)
         return response.data.session;
     } catch (error) {
         console.log(error)

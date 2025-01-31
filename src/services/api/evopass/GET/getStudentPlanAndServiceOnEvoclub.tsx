@@ -6,12 +6,12 @@ export async function GetStudentPlanAndServiceOnEvoclub (cpf:string) {
     const token = store.getState().userInfos.loggedInUserToken; 
 
     const config = {
-      method: 'get',
-      maxBodyLength: Infinity,
-      url: `${BaseUrl}/service-subscription/${cpf}?status=${'RECEIVED'}&activateFilter=true`,
-      headers: {
-        Authorization: `Bearer ${token}`,
-    },
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: `${BaseUrl}/service-subscription/${cpf}?status=${'RECEIVED'}&activateFilter=true`,
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
     };
     
     try {

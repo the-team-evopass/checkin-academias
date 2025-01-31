@@ -1,10 +1,12 @@
 import { FormEvent, useState } from "react";
+import { useSelector } from 'react-redux';
 import { CustomInput } from "../../class/input/classInput";
 import { CardStudentInformationEvoclub } from "../cardCheckinEvoclub/cardCheckinEvoclub";
 import { ApplicationAlert } from "../alerts/applicationAlert/alert";
 import { LoadinScreen } from "../loadingScreen/loadingScreen";
 
-import { StudentInfosForCheckinEvoclubSubscriptionData as StudentInfosForCheckinEvoclubProps } from "../../types/components/studentInfosForCheckinEvoclubTypes";
+import { StudentInfosForCheckinEvoclubSubscriptionData as StudentInfosForCheckinEvoclubProps,StudentInfosForCheckinEvoclubService } from '../../types/components/studentInfosForCheckinEvoclubTypes';
+import { SliceUserInfosProps as UserInfosProps } from "../../redux/slices/slicesStates/sliceUserInfosTypes";
 
 import validateCPF from "../../utils/validators/cpfValidator";
 import formatSTRToCPF from "../../utils/formats/formatSTRToCPF";
@@ -13,9 +15,13 @@ import formatCPFToSTR from "../../utils/formats/formatCPFToSTR";
 import { GetStudentPlanAndServiceOnEvoclub } from "../../services/api/evopass/GET/getStudentPlanAndServiceOnEvoclub";
 
 import arrowIcon from "../../assets/imgs/svgs/arrow-right.svg";
-import "../../assets/styles/components/formEntradaManual/styleFormEntradaManual.css";
-import patchConsumeService from "../../services/api/evopass/POST/patchConsumeService";
+import patchConsumeService from "../../services/api/evopass/PATCH/patchConsumeService";
 import GetStudentInAsaasByCPF from "../../services/api/evopass/GET/GetStudentInAsaasByCPF";
+import "../../assets/styles/components/formEntradaManual/styleFormEntradaManual.css";
+
+interface RootStateUserInfos {
+  userInfos: UserInfosProps
+}
 
 interface StudentInfosForCheckinProps {
   name: string;
@@ -29,16 +35,15 @@ export function FormEntradaManualEvoclub() {
   const [cpf, setCPF] = useState<string>();
   const [showCarUserInfos, setShowCardInfos] = useState<boolean>(false);
   const [selectedIdService, setSelectedIdService] = useState<string>("");
-
+  const userInfos = useSelector((state: RootStateUserInfos) => state.userInfos);
   const [studentInfosForCheckinEvoclub, setStudentInfosForCheckinEvoclub] =
     useState<StudentInfosForCheckinProps>({
-      name: "John",
-      CPF: "000.000.000-00",
-      contact: "felipe@evopass.app.br",
+      name: "",
+      CPF: "",
+      contact: "",
     });
 
-  const [
-    studentInfosForCheckinEvoclubASAAS,
+  const [ studentInfosForCheckinEvoclubASAAS,
     setStudentInfosForCheckinEvoclubASAAS,
   ] = useState<StudentInfosForCheckinEvoclubProps>({
     cpf: "",
@@ -48,6 +53,11 @@ export function FormEntradaManualEvoclub() {
     services: [],
   });
 
+  function getIndexServiceByID (services: StudentInfosForCheckinEvoclubService[], idService: string) {
+    const indexService = services.findIndex(service => service.id === idService)
+    return indexService
+  }
+
   async function handleSearchStudentsInfos() {
     setIsLoading(true);
 
@@ -55,10 +65,10 @@ export function FormEntradaManualEvoclub() {
 
     if (validateCPF(cpf ? cpf : "") === true) {
       try {
-        const checkinEvoclubASAASResponse =
-          await GetStudentPlanAndServiceOnEvoclub(
-            formatCPFToSTR(cpf ? cpf : "")
-          );
+
+        const checkinEvoclubASAASResponse = await GetStudentPlanAndServiceOnEvoclub(
+          formatCPFToSTR(cpf ? cpf : "")
+        );
 
         const studentData = await GetStudentInAsaasByCPF(
           formatCPFToSTR(cpf ? cpf : "")
@@ -66,6 +76,8 @@ export function FormEntradaManualEvoclub() {
 
         // Verifique se os dados foram retornados antes de definir o estado
         if (studentData) {
+          console.log("Print dos serviços")
+          console.log(checkinEvoclubASAASResponse)
           setStudentInfosForCheckinEvoclubASAAS({
             cpf: checkinEvoclubASAASResponse.cpf,
             subscriptionPlan: checkinEvoclubASAASResponse.subscriptionPlan,
@@ -73,6 +85,8 @@ export function FormEntradaManualEvoclub() {
             subscriptionId: checkinEvoclubASAASResponse.subscriptionId,
             services: checkinEvoclubASAASResponse.services,
           });
+
+          console.log(checkinEvoclubASAASResponse.services)
 
           setStudentInfosForCheckinEvoclub({
             name: studentData.name,
@@ -118,6 +132,7 @@ export function FormEntradaManualEvoclub() {
   };
 
   async function handleCheckin() {
+
     const selectedService = studentInfosForCheckinEvoclubASAAS.services.find(
       (service) => service.id === selectedIdService
     );
@@ -127,6 +142,7 @@ export function FormEntradaManualEvoclub() {
       return;
     }
 
+    // TODO - Revisar essa lógica
     //Converção para pegarmos a quantidade de serviços
     const totalSessions = studentInfosForCheckinEvoclubASAAS.services.filter(
       (service) => service.paymentLink.id === selectedService.paymentLink.id
@@ -155,7 +171,15 @@ export function FormEntradaManualEvoclub() {
     setIsLoading(true);
 
     try {
-      const response = await patchConsumeService(selectedIdService);
+
+      const selectedInfosService = studentInfosForCheckinEvoclubASAAS.services[getIndexServiceByID(studentInfosForCheckinEvoclubASAAS.services,selectedIdService)]
+
+      const response = await patchConsumeService({
+        "serviceId": selectedInfosService.id,
+        "isActive": false,
+        "usageDate": new Date().toISOString(),
+        "fkUnit": parseInt(userInfos.internalID)
+      });
       console.log(response);
       ApplicationAlert("success", "Check-in realizado com sucesso!");
       setShowCardInfos(false);

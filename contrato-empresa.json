@@ -1,44 +1,43 @@
 {
-    "id": 4,
-    "idCompany": 123,
-    "idDocCompany": 0,
-    "status": true,
-    "startValidity": "2023-10-10",
-    "Renovar em": "meu periodo",
-    "Renovar estimado": "minha data",
-    "endValidity": "2023-12-31",
-    "docType": "meu tipos de documento",
-    "observation": "string",
-    "conditions": {
-        "tablelName": "tabela padrão de cobrança",
-        "accessFee": 14.6,
-        "accessFeeDiscount": 2.72,
-        // falha de lógica no ano
-        "discountPeriodYear": 2024,
-        "discountPeriodMonth": 10,
-        "coPay": {
-            "value": 79.90,
-            "coparticipationPercentage": 50
-        }
-    },
-    "additionalServices": [
-        {
-            "id": 123,
-            "type": "Laboral",
-            "description": "string",
-            "status": true,
-            "dateStart": "string",
-            "dateEnd": "string",
-            "amountOfEventsPerWeek": "3 aulas por semana",
-            "durationOfEvent": "3 meses",
-            "value": 2245.34,
-            "paymentInformation": {
-                "discountPercentage": 20,
-                "finalValue": 284.89,
-                "installmentNumber": 2,
-                "amountPerCharge": 1122.5,
-                "billingIndex": 1
-            }
-        }
-    ]
+  "id": 4,
+  "idCompany": 123,
+  "idDocCompany": 0,
+  "status": true,
+  "startValidity": "2023-10-10",
+  "Renovar em": "meu periodo",
+  "Renovar estimado": "minha data",
+  "endValidity": "2023-12-31",
+  "docType": "meu tipos de documento",
+  "observation": "string",
+  "conditions": {
+    "tablelName": "tabela padrão de cobrança",
+    "accessFee": 14.6,
+    "accessFeeDiscount": 2.72,
+    "discountPeriodYear": 2024,
+    "discountPeriodMonth": 10,
+    "coPay": {
+      "value": 79.9,
+      "coparticipationPercentage": 50
+    }
+  },
+  "additionalServices": [
+    {
+      "id": 123,
+      "type": "Laboral",
+      "description": "string",
+      "status": true,
+      "dateStart": "string",
+      "dateEnd": "string",
+      "amountOfEventsPerWeek": "3 aulas por semana",
+      "durationOfEvent": "3 meses",
+      "value": 2245.34,
+      "paymentInformation": {
+        "discountPercentage": 20,
+        "finalValue": 284.89,
+        "installmentNumber": 2,
+        "amountPerCharge": 1122.5,
+        "billingIndex": 1
+      }
+    }
+  ]
 }

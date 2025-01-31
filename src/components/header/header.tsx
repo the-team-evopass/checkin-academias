@@ -1,5 +1,8 @@
 import { useSelector } from 'react-redux';
-import iconBell from '../../assets/icons/icon-bell.svg';
+// import { useDispatch } from "react-redux";
+// import { RootState } from '../../redux/store';
+// import { changeStateIsNotificationBarActivated } from '../../redux/slices/sliceAPP';
+import { NotificationBadge } from '../notification/notificationBadge/notificationBadge.tsx';
 import '../../assets/styles/components/header/styleHeader.css';
 
 interface UserInfosProps {
@@ -9,28 +12,43 @@ interface UserInfosProps {
     userUID: string
 }
 
-interface RootState {
+interface RootStateUserInfos {
     userInfos: UserInfosProps
 }
 
 export function Header() {
 
-    const userInfos = useSelector((state: RootState) => state.userInfos);
+    // const dispatch = useDispatch();
+
+    // const isNotificationBarActivated = useSelector((state: RootState) => state.app.isNotificationBarActivated)
+
+    // function handleAlternateStateNotificationBar () {
+    //     dispatch(changeStateIsNotificationBarActivated(false));
+    //     return isNotificationBarActivated
+    // }
+
+    const userInfos = useSelector((state: RootStateUserInfos) => state.userInfos);
 
     return (
         <header className='header'>
             <div className='header-notification'>
-                <img src={iconBell} alt='sino de notificação' className='header-notification-img' />
+                <NotificationBadge
+                    countNotification={0}
+                    onClick={() => () =>(null)}
+                />
             </div>
             <div className='header-user-informations'>
                 {
                     userInfos.userPhotoURL && (
-                        <img src={userInfos.userPhotoURL} alt='foto de perfil da academia ou da rede' className='header-user-informations-img' />
+                        <img src={userInfos.userPhotoURL}
+                            alt='foto de perfil da academia ou da rede'
+                            className='header-user-informations-img'
+                        />
                     )
                 }
                 <div className='header-user-information-content'>
                     <h3>{userInfos.userName}</h3>
-                    <h5>id: {userInfos.userUID}</h5>
+                    <h5>{userInfos.userUID}</h5>
                 </div>
             </div>
         </header>
