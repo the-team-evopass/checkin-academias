@@ -49,7 +49,7 @@ export function Sidebar() {
         )}
       </header>
       <ul className="sidebar-list-buttons">
-        {!showSidebar && (
+        {showSidebar && (
           <>
             <li className="sidebar-list-buttons-li">
               <SidebarButton
@@ -95,7 +95,7 @@ export function Sidebar() {
           />
         </li>
 
-        {!showSidebar && (
+        {showSidebar && (
           <>
             <li className="sidebar-list-buttons-li">
               <SidebarButton

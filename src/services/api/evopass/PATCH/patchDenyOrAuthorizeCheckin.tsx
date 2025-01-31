@@ -1,8 +1,8 @@
 import axios from "axios";
-import BaseUrl from "../baseurl/BaseUrl";
-import store from "../../../redux/store";
+import BaseUrl from "../../baseurl/BaseUrl";
+import store from "../../../../redux/store";
 
-export default function denyOrAuthorizeCheckin (gymId: string, idStudent: string) {
+export default function patchDenyOrAuthorizeCheckin (gymId: string, idStudent: string) {
     const token = store.getState().userInfos.loggedInUserToken; 
     
     const config = {

@@ -10,7 +10,7 @@ export default async function postCreateCheckinRedundant (studentCPF: string, ac
     maxBodyLength: Infinity,
     url: `${BaseUrl}/check-in/by-employee/${studentCPF}`,
     headers: { 
-      'Authorization': `Bearer ${accessToken}`, //Aqui já estava feito dessa forma
+      'Authorization': `Bearer ${accessToken}`,
     },
     data : data
   };
