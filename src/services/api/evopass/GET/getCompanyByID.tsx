@@ -11,6 +11,7 @@ export default async function GetCompanyByID (ID: string) {
         url: `${BaseUrl}/company/${ID}`,
         headers: {
             Authorization: `Bearer ${token}`,
+            "x-api-key": "3tdHRWODKejibfFGiFcU30RC7ir3TBXi",
         },
     };
 

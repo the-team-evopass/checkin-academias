@@ -33,7 +33,8 @@ export default async function GetloginManagementWeb({ email, password, role }: G
         maxBodyLength: Infinity,
         url: `${BaseUrl}/user/signin/unit`,
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            "x-api-key": "3tdHRWODKejibfFGiFcU30RC7ir3TBXi",
         },
         data: data
     };

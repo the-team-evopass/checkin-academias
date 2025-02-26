@@ -5,17 +5,19 @@ import store from "../../../../redux/store";
 interface PostConsumeServiceParamsProps {
   isActive: boolean;
   usageDate: string;
-  serviceId:string
-  fkUnit: number
+  serviceId: string;
+  fkUnit: number;
 }
 
-export default async function patchConsumeService(params: PostConsumeServiceParamsProps) {
+export default async function patchConsumeService(
+  params: PostConsumeServiceParamsProps
+) {
   const token = store.getState().userInfos.loggedInUserToken;
 
   const data = {
-    "isActive": params.isActive,
-    "usageDate": params.usageDate,
-    "fkUnit": params.fkUnit
+    isActive: params.isActive,
+    usageDate: params.usageDate,
+    fkUnit: params.fkUnit,
   };
 
   const config = {
@@ -25,6 +27,7 @@ export default async function patchConsumeService(params: PostConsumeServicePara
     data: data,
     headers: {
       Authorization: `Bearer ${token}`,
+      "x-api-key": "3tdHRWODKejibfFGiFcU30RC7ir3TBXi",
     },
   };
 

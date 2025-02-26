@@ -8,9 +8,10 @@ export async function GetStudentPlanAndServiceOnEvoclub (cpf:string) {
     const config = {
         method: 'get',
         maxBodyLength: Infinity,
-        url: `${BaseUrl}/service-subscription/${cpf}?status=${'RECEIVED'}&activateFilter=true`,
+        url: `${BaseUrl}/purchased-service?cpf=${cpf}`,
         headers: {
             Authorization: `Bearer ${token}`,
+            "x-api-key": "3tdHRWODKejibfFGiFcU30RC7ir3TBXi",
         },
     };
     

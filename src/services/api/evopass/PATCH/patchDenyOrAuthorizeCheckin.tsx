@@ -11,6 +11,7 @@ export default function patchDenyOrAuthorizeCheckin (gymId: string, idStudent: s
         url: `${BaseUrl}/check-in?id=${gymId}&idStudent=${idStudent}`,
         headers: {
             Authorization: `Bearer ${token}`,
+            "x-api-key": "3tdHRWODKejibfFGiFcU30RC7ir3TBXi",
         },
     };
         

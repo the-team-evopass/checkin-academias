@@ -10,6 +10,7 @@ export async function IsLogged(userAccessToken: string) {
         url: `${BaseUrl}/user/isLogged`,
         headers: {
             'Authorization': userAccessToken,
+            "x-api-key": "3tdHRWODKejibfFGiFcU30RC7ir3TBXi",
         },
     };
 

@@ -19,6 +19,7 @@ export default async function allHistoricalCheckIn(gymID: number) {
       url: `${BaseUrl}/check-in`,
       headers: {
         Authorization: `Bearer ${token}`,
+        "x-api-key": "3tdHRWODKejibfFGiFcU30RC7ir3TBXi",
     },
       data : ''
     };

@@ -11,6 +11,7 @@ export default async function GetStudentByCPF (CPF: string) {
     url: `${BaseUrl}/unified-user/${CPF}`,
     headers: {
       Authorization: `Bearer ${token}`,
+      "x-api-key": "3tdHRWODKejibfFGiFcU30RC7ir3TBXi",
   },
   };
   

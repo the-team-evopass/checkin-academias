@@ -11,6 +11,7 @@ export default async function GetTicketGateConfiguration (gymID: string | undefi
       url: `${BaseUrl}/unit/?id=${gymID}`,
       headers: {
         Authorization: `Bearer ${token}`,
+        "x-api-key": "3tdHRWODKejibfFGiFcU30RC7ir3TBXi",
     },
     }
     

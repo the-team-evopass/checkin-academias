@@ -10,6 +10,7 @@ export default async function GetStudentInAsaasByCPF(CPF: string) {
     url: `${BaseUrl}/customers?subAccount=EVOCLUB_REALITY&cpfCnpj=${CPF}`,
     headers: {
       Authorization: `Bearer ${token}`,
+      "x-api-key": "3tdHRWODKejibfFGiFcU30RC7ir3TBXi",
   },
   };
 
